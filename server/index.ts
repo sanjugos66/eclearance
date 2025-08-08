@@ -15,12 +15,12 @@ type TestAction =
 
 type TestCase = {
   id: string;
-  name: string;                 // e.g., "Offboarding: Silbeth Pablo"
-  employeeName?: string;        // used by offboarding flow
-  spec: string;                 // e.g., "tests/validate-offboarding.spec.ts"
-  grep?: string;                // optional test title filter
-  env?: Record<string, string>; // env vars passed to the run
-  actions?: TestAction[];       // high-level steps your modules read from configs
+  name: string;
+  employeeName?: string;
+  spec: string;
+  grep?: string;
+  env?: Record<string, string>;
+  actions?: TestAction[];
   createdAt: string;
   updatedAt: string;
 };
@@ -34,7 +34,7 @@ type RunRecord = {
   artifactsDir?: string;
   exitCode?: number | null;
   error?: string;
-  logPath?: string; // appended text log
+  logPath?: string;
 };
 
 const app = express();
@@ -47,6 +47,7 @@ const DATA_DIR = path.join(ROOT, 'server_data');
 const CASES_PATH = path.join(DATA_DIR, 'test_cases.json');
 const RUNS_PATH = path.join(DATA_DIR, 'runs.json');
 const ARTIFACTS_ROOT = path.join(ROOT, 'artifacts');
+const QA_UI_DIR = path.join(ROOT, 'qa-ui');
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 fs.mkdirSync(ARTIFACTS_ROOT, { recursive: true });
@@ -63,28 +64,22 @@ function writeJson<T>(file: string, data: T) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf-8');
 }
 
-function getCases(): TestCase[] {
-  return readJson<TestCase[]>(CASES_PATH, []);
-}
-function saveCases(cases: TestCase[]) {
-  writeJson(CASES_PATH, cases);
-}
-function getRuns(): RunRecord[] {
-  return readJson<RunRecord[]>(RUNS_PATH, []);
-}
-function saveRuns(runs: RunRecord[]) {
-  writeJson(RUNS_PATH, runs);
-}
+const getCases = () => readJson<TestCase[]>(CASES_PATH, []);
+const saveCases = (cases: TestCase[]) => writeJson(CASES_PATH, cases);
+const getRuns = () => readJson<RunRecord[]>(RUNS_PATH, []);
+const saveRuns = (runs: RunRecord[]) => writeJson(RUNS_PATH, runs);
 
-/** ===== Static: serve artifacts =====
- * GET /artifacts/<runId>/<file>
- */
+/** ===== Static UI & artifacts ===== */
+if (fs.existsSync(QA_UI_DIR)) app.use('/qa-ui', express.static(QA_UI_DIR));
+app.get('/', (_req, res) => {
+  const p = path.join(QA_UI_DIR, 'index.html');
+  if (fs.existsSync(p)) return res.sendFile(p);
+  res.type('text/plain').send('UI not found. Put an index.html in /qa-ui.');
+});
 app.use('/artifacts', express.static(ARTIFACTS_ROOT, { fallthrough: true }));
 
 /** ===== Test Cases API ===== */
-app.get('/api/cases', (_req, res) => {
-  res.json(getCases());
-});
+app.get('/api/cases', (_req, res) => res.json(getCases()));
 
 app.post('/api/cases', (req, res) => {
   const now = new Date().toISOString();
@@ -110,12 +105,7 @@ app.put('/api/cases/:id', (req, res) => {
   const idx = cases.findIndex(c => c.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: 'Not found' });
   const now = new Date().toISOString();
-  cases[idx] = {
-    ...cases[idx],
-    ...req.body,
-    id: cases[idx].id, // don’t allow id change
-    updatedAt: now,
-  };
+  cases[idx] = { ...cases[idx], ...req.body, id: cases[idx].id, updatedAt: now };
   saveCases(cases);
   res.json(cases[idx]);
 });
@@ -129,10 +119,7 @@ app.delete('/api/cases/:id', (req, res) => {
 });
 
 /** ===== Runs API ===== */
-app.get('/api/runs', (_req, res) => {
-  res.json(getRuns());
-});
-
+app.get('/api/runs', (_req, res) => res.json(getRuns()));
 app.get('/api/runs/:runId', (req, res) => {
   const run = getRuns().find(r => r.runId === req.params.runId);
   if (!run) return res.status(404).json({ error: 'Not found' });
@@ -152,9 +139,7 @@ app.get('/api/runs/:runId/stream', (req, res) => {
     return res.end();
   }
 
-  // Tail the log file if it exists
   const logFile = run.logPath && fs.existsSync(run.logPath) ? run.logPath : null;
-  let fd: number | null = null;
   let position = 0;
 
   function sendLine(line: string) {
@@ -163,39 +148,28 @@ app.get('/api/runs/:runId/stream', (req, res) => {
 
   if (logFile) {
     try {
-      fd = fs.openSync(logFile, 'r');
-      const stat = fs.fstatSync(fd);
-      position = 0;
-      const buf = Buffer.alloc(stat.size);
-      fs.readSync(fd, buf, 0, stat.size, 0);
-      const existing = buf.toString('utf8');
+      const existing = fs.readFileSync(logFile, 'utf8');
+      position = Buffer.byteLength(existing);
       existing.split(/\r?\n/).forEach(l => l && sendLine(l));
     } catch {}
   }
 
   const interval = setInterval(() => {
-    const runs = getRuns();
-    const latest = runs.find(r => r.runId === req.params.runId);
-    if (!latest) return; // ignore
-    if (fd && latest.logPath === logFile) {
+    const latest = getRuns().find(r => r.runId === req.params.runId);
+    if (!latest) return;
+    if (logFile && fs.existsSync(logFile)) {
       try {
-        const stat = fs.statSync(logFile!);
+        const stat = fs.statSync(logFile);
         if (stat.size > position) {
-          const buf = Buffer.alloc(stat.size - position);
-          const fd2 = fs.openSync(logFile!, 'r');
-          fs.readSync(fd2, buf, 0, buf.length, position);
-          fs.closeSync(fd2);
+          const buf = fs.readFileSync(logFile);
+          const chunk = buf.toString('utf8', position);
           position = stat.size;
-          buf
-            .toString('utf8')
-            .split(/\r?\n/)
-            .forEach(l => l && sendLine(l));
+          chunk.split(/\r?\n/).forEach(l => l && sendLine(l));
         }
       } catch {}
     }
-    // send status heartbeat
     res.write(`event: status\ndata: ${JSON.stringify({ status: latest.status, exitCode: latest.exitCode })}\n\n`);
-    if (latest.status === 'passed' || latest.status === 'failed' || latest.status === 'error') {
+    if (['passed', 'failed', 'error'].includes(latest.status)) {
       clearInterval(interval);
       res.write(`event: done\ndata: ${JSON.stringify(latest)}\n\n`);
       res.end();
@@ -205,20 +179,17 @@ app.get('/api/runs/:runId/stream', (req, res) => {
   req.on('close', () => clearInterval(interval));
 });
 
-/** Kick off a run */
+/** ===== Kick off a run (with watchdog) ===== */
 app.post('/api/run', async (req, res) => {
-  const { testCaseId } = req.body ?? {};
-  const cases = getCases();
-  const tc = cases.find(c => c.id === testCaseId);
+  const { testCaseId, headed = true } = req.body ?? {};
+  const tc = getCases().find(c => c.id === testCaseId);
   if (!tc) return res.status(404).json({ error: 'Test case not found' });
 
-  // Create run record
   const runId = uuid();
   const runDir = path.join(ARTIFACTS_ROOT, runId);
   fs.mkdirSync(runDir, { recursive: true });
   const logPath = path.join(runDir, 'run.log');
 
-  const runs = getRuns();
   const run: RunRecord = {
     runId,
     testCaseId: tc.id,
@@ -227,56 +198,60 @@ app.post('/api/run', async (req, res) => {
     startedAt: new Date().toISOString(),
     logPath,
   };
-  runs.push(run);
-  saveRuns(runs);
+  saveRuns([...getRuns(), run]);
 
-  // Respond immediately; client can /stream or poll /api/runs/:runId
   res.status(202).json({ runId, artifactsUrl: `/artifacts/${runId}`, stream: `/api/runs/${runId}/stream` });
 
-  // Build env for child
   const childEnv: NodeJS.ProcessEnv = { ...process.env };
-  // Pass actions and employee name to Playwright via ENV (your modules can read these)
   if (tc.employeeName) childEnv['EMPLOYEE_NAME'] = tc.employeeName;
-  if (tc.actions && tc.actions.length) childEnv['QA_ACTIONS'] = tc.actions.join(',');
-  if (tc.env) {
-    Object.entries(tc.env).forEach(([k, v]) => (childEnv[k] = String(v)));
-  }
-  // Ensure artifacts root is discoverable
+  if (tc.actions?.length) childEnv['QA_ACTIONS'] = tc.actions.join(',');
+  Object.entries(tc.env ?? {}).forEach(([k, v]) => (childEnv[k] = String(v)));
   childEnv['ARTIFACTS_RUN_DIR'] = runDir;
 
-  // Construct Playwright args
-  const args = ['playwright', 'test', tc.spec, '--headed'];
-  if (tc.grep) {
-    args.push('--grep', tc.grep);
-  }
+  const args = ['playwright', 'test', tc.spec];
+  if (tc.grep) args.push('--grep', tc.grep);
+  if (headed) args.push('--headed');
 
   append(logPath, `Starting run ${runId} for case "${tc.name}"\n> npx ${args.join(' ')}\n`);
 
-  // Flip to running
   updateRun(runId, { status: 'running' });
 
   const child = spawn('npx', args, {
     cwd: ROOT,
     env: childEnv,
-    shell: process.platform === 'win32', // safer on Windows
+    shell: process.platform === 'win32',
   });
 
-  child.stdout.on('data', (buf) => append(logPath, buf.toString()));
-  child.stderr.on('data', (buf) => append(logPath, buf.toString()));
-
-  child.on('error', (err) => {
+  child.stdout.on('data', b => append(logPath, b.toString()));
+  child.stderr.on('data', b => append(logPath, b.toString()));
+  child.on('error', err => {
     append(logPath, `\n[ERROR] ${err?.message}\n`);
     finishRun(runId, 'error', 1, err?.message);
   });
 
+  // #### Watchdog ####
+  const MAX_RUN_SECONDS = Number(process.env.MAX_RUN_SECONDS ?? 180); // 3 min default
+  const term = setTimeout(() => {
+    append(logPath, `\n[WATCHDOG] Exceeded ${MAX_RUN_SECONDS}s. Sending SIGTERM…\n`);
+    try { child.kill('SIGTERM'); } catch {}
+    const killHard = setTimeout(() => {
+      if (!child.killed) {
+        append(logPath, `[WATCHDOG] Forcing SIGKILL…\n`);
+        try { child.kill('SIGKILL'); } catch {}
+      }
+    }, 10_000);
+    child.once('close', () => clearTimeout(killHard));
+  }, MAX_RUN_SECONDS * 1000);
+
   child.on('close', (code) => {
+    clearTimeout(term);
     append(logPath, `\nProcess exited with code ${code}\n`);
     const status = code === 0 ? 'passed' : 'failed';
-    finishRun(runId, status, code ?? null);
+    finishRun(runId, status, code ?? null, code === null ? 'Killed by watchdog' : undefined);
   });
 });
 
-/** ===== Helpers to mutate a run safely ===== */
+/** ===== Helpers ===== */
 function updateRun(runId: string, patch: Partial<RunRecord>) {
   const runs = getRuns();
   const idx = runs.findIndex(r => r.runId === runId);
@@ -284,23 +259,11 @@ function updateRun(runId: string, patch: Partial<RunRecord>) {
   runs[idx] = { ...runs[idx], ...patch };
   saveRuns(runs);
 }
-
 function finishRun(runId: string, status: RunRecord['status'], exitCode: number | null, error?: string) {
-  updateRun(runId, {
-    status,
-    exitCode,
-    error,
-    finishedAt: new Date().toISOString(),
-  });
+  updateRun(runId, { status, exitCode, error, finishedAt: new Date().toISOString() });
 }
-
-/** Small logger to file */
 function append(file: string, text: string) {
-  try {
-    fs.appendFileSync(file, text);
-  } catch (e) {
-    console.error('Log append failed:', e);
-  }
+  try { fs.appendFileSync(file, text); } catch (e) { console.error('Log append failed:', e); }
 }
 
 /** ===== Start server ===== */

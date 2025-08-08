@@ -1,32 +1,39 @@
-import { Page, expect } from '@playwright/test';
+// modules/offboardingRouting.ts
+import { Page } from '@playwright/test';
 import path from 'path';
 import fs from 'fs';
 import { createRunLog, saveDebugLog } from './debugLogger';
 import { handleAnyModals, resolveErrorThenCancelUnderlyingConfirm, probeScreens } from './modalUtils';
 
+type Outcome = 'success' | 'blocked';
+
+type Options = {
+  /** If true, close the context at the very end (after we’re done). Default: false */
+  autoClose?: boolean;
+};
+
 export async function validateAndRouteOffboarding(
   page: Page,
-  employeeName: string
-): Promise<'success' | 'blocked'> {
-  const { dir, logfile } = createRunLog(employeeName);
+  employeeName: string,
+  options: Options = {}
+): Promise<Outcome> {
+  const { autoClose = false } = options;
 
+  const { dir, logfile } = createRunLog(employeeName);
   const log = (m: string) => saveDebugLog(employeeName, logfile, m);
   const snap = async (tag: string) => {
-    try { await page.screenshot({ path: path.join(dir, `${tag}.png`) }); } catch {}
+    try { await page.screenshot({ path: path.join(dir, `${tag}.png`), fullPage: true }); } catch {}
   };
   const dumpHtml = async (tag: string) => {
     try { fs.writeFileSync(path.join(dir, `${tag}.html`), await page.content()); } catch {}
   };
 
-  let expectedClose = false;
-  page.on('close', () => {
-    if (!expectedClose) log('⚠️ page closed unexpectedly');
-  });
+  // NOTE: Do NOT close the page/context from inside this helper unless autoClose=true.
   page.on('framenavigated', f => log(`📦 navigated: ${f.url()}`));
 
   log(`🕒 start run for ${employeeName}`);
 
-  // --- Navigate to Offboarding (your original selectors) ---
+  // --- Navigate to Offboarding (same steps you had) ---
   await page.getByRole('link', { name: /Staff Center/i }).click();
   await snap('nav_staff_center');
 
@@ -54,18 +61,21 @@ export async function validateAndRouteOffboarding(
   await handleAnyModals(page, 'after validate click');
   await snap('after_validate');
 
-  // ===== Assign OM People Business Partner (your previous path with fallbacks) =====
+  // ===== Assign OM People Business Partner =====
   const omRow = page.getByRole('row', { name: /OM\s+People Business Partner/i });
   await omRow.locator('span').nth(3).click(); // open dropdown
-  // “Goswami, Sanju (sgoswami@…”
   const meOption = page.getByText(/Goswami,\s*Sanju\s*\(sgoswami@/i, { exact: false });
   await meOption.first().click({ trial: false });
-  // click the node in the flow to commit (same selector you used)
-  await page.locator('g:nth-child(5) > .node-foreign-object > .node-foreign-object-div > .outer-wrapper > div').click();
+
+  // commit selection in the flow
+  await page
+    .locator('g:nth-child(5) > .node-foreign-object > .node-foreign-object-div > .outer-wrapper > div')
+    .click();
+
   await handleAnyModals(page, 'after assigning OM People Business Partner');
   await snap('after_assign_om');
 
-  // Confirm role assignment (first confirm)
+  // Confirm role assignment
   await page.getByRole('button', { name: /^\s+Confirm$|^Confirm$/i }).click();
   await handleAnyModals(page, 'after confirm role assignment');
 
@@ -73,31 +83,28 @@ export async function validateAndRouteOffboarding(
   await page.locator('#prerequisite_edit-2').selectOption('0');
   await handleAnyModals(page, 'after prerequisite 2 select');
 
-  // ===== Final Confirm → error → OK → underlying confirm → Cancel =====
+  // ===== Final Confirm → (maybe) error =====
   await page.getByRole('button', { name: /^\s+Confirm$|^Confirm$/i }).click();
 
-  // Probe a bit for the error dialog, capture screenshots as we go
+  // Look for the error dialog and capture evidence
   await probeScreens(page, dir, 'post_final_confirm_probe', 3, 600);
 
-  // If there’s an error dialog, resolve + cancel the underlying confirm
-  await resolveErrorThenCancelUnderlyingConfirm(page, log);
+  // Have the resolver tell us if an error dialog was present
+  const hadError = await resolveErrorThenCancelUnderlyingConfirm(page, log); // should return boolean
+  await handleAnyModals(page, 'post-final-confirm catchall');
 
-  // After the above sequence, there should be **no** dialogs left.
-  // If a stray dialog is still visible, try to close it politely.
-  const strayText = await handleAnyModals(page, 'post-final-confirm catchall');
-  if (strayText) {
-    log(`ℹ️ A leftover dialog appeared and was handled: ${strayText}`);
-  }
-
-  // Take a last screenshot + html for sanity
   await snap('final_state');
   await dumpHtml('final_state');
 
-  // If we reached here without throwing, the flow is “completed” for test purposes.
-  // We didn’t route (blocked is expected); treat as success path for assertions if you like.
-  // Close the context intentionally so the close handler doesn’t shout.
-  expectedClose = true;
-  await page.context().close().catch(() => {});
-  log('✅ Finished flow and closed context intentionally');
-  return 'success';
+  log(hadError ? '🧱 Flow blocked by expected error' : '✅ Flow completed without blocking error');
+
+  // Only close if explicitly asked to — this avoids the “page closed” error in test teardown.
+  if (autoClose) {
+    try {
+      await page.context().close();
+      log('✅ Closed context (autoClose=true)');
+    } catch {}
+  }
+
+  return hadError ? 'blocked' : 'success';
 }

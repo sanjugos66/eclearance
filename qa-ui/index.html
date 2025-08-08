@@ -1,60 +1,232 @@
 <!doctype html>
 <html>
-  <body>
-    <h2>QA Runner</h2>
-    <div>
-      <label>Case:</label>
-      <select id="case"></select>
-      <label><input type="checkbox" id="headed" checked> Headed</label>
-      <button id="run">Run</button>
+<head>
+  <meta charset="utf-8" />
+  <title>QA Runner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding: 16px; }
+    h1 { margin: 0 0 12px; font-size: 20px; }
+    h2 { margin: 24px 0 8px; font-size: 16px; }
+    fieldset { border: 1px solid #ddd; padding: 12px; border-radius: 8px; }
+    label { display:block; margin: 6px 0 2px; font-size: 12px; color:#444; }
+    input, textarea, select, button { font-size: 14px; }
+    input, textarea, select { width: 100%; padding: 6px 8px; box-sizing: border-box; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cases { margin-top: 8px; }
+    .case { border:1px solid #eee; border-radius:8px; padding:10px; margin:8px 0; }
+    .muted { color:#666; font-size:12px; }
+    .runs .run { border:1px solid #ddd; border-radius:8px; padding:10px; margin:8px 0; }
+    .pill { display:inline-block; padding:2px 6px; border-radius:999px; font-size:12px; background:#eee; margin-left:6px; }
+    pre { background: #0f172a; color: #e5e7eb; padding: 8px; border-radius: 6px; overflow:auto; max-height: 200px; }
+    .actions { display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+    .small { font-size:12px; }
+    a { color: #0b5dd7; }
+  </style>
+</head>
+<body>
+  <h1>QA Runner</h1>
+
+  <fieldset>
+    <legend>Add Test Case</legend>
+    <div class="row">
+      <div>
+        <label>Case Name</label>
+        <input id="name" placeholder="Offboarding: Silbeth Pablo" />
+      </div>
+      <div>
+        <label>Employee Name (optional)</label>
+        <input id="employeeName" placeholder="Silbeth Pablo" />
+      </div>
     </div>
-    <pre id="log"></pre>
 
-    <h3>Runs</h3>
-    <ul id="runs"></ul>
-    <div id="files"></div>
+    <div class="row">
+      <div>
+        <label>Spec file</label>
+        <input id="spec" value="tests/validate-offboarding.spec.ts" />
+      </div>
+      <div>
+        <label>Grep (optional)</label>
+        <input id="grep" placeholder="should complete offboarding" />
+      </div>
+    </div>
 
-    <script>
-      const casesEl = document.getElementById('case');
-      const runsEl = document.getElementById('runs');
-      const filesEl = document.getElementById('files');
-      const logEl = document.getElementById('log');
+    <div class="row">
+      <div>
+        <label>Actions (comma-separated)</label>
+        <input id="actions" placeholder="assign_om,confirm_final" />
+      </div>
+      <div>
+        <label>Env (JSON object)</label>
+        <input id="env" placeholder='{"BASE_URL":"https://app.example.com"}' />
+      </div>
+    </div>
 
-      async function loadCases() {
-        const { cases } = await (await fetch('/api/cases')).json();
-        casesEl.innerHTML = cases.map(c => `<option>${c}</option>`).join('');
+    <div class="actions" style="margin-top:10px;">
+      <button id="addCaseBtn">Add Case</button>
+      <span class="muted small">Fields map to the server TestCase schema.</span>
+    </div>
+  </fieldset>
+
+  <h2>Cases</h2>
+  <div class="cases" id="cases"></div>
+
+  <h2>Runs</h2>
+  <div class="runs" id="runs"></div>
+
+<script>
+const $cases = document.getElementById('cases');
+const $runs = document.getElementById('runs');
+
+function parseEnv(str){
+  if(!str) return {};
+  try { return JSON.parse(str); } catch { alert('Env must be valid JSON'); throw new Error('bad env'); }
+}
+function parseActions(str){
+  if(!str) return [];
+  return str.split(',').map(s => s.trim()).filter(Boolean);
+}
+
+async function fetchJSON(url, opts){
+  const res = await fetch(url, opts);
+  if(!res.ok){ throw new Error(await res.text()); }
+  return res.json();
+}
+
+async function loadCases(){
+  const cases = await fetchJSON('/api/cases');
+  renderCases(cases);
+}
+
+function renderCases(cases){
+  if(!cases.length){ $cases.innerHTML = '<div class="muted">No cases yet. Add one above.</div>'; return; }
+  $cases.innerHTML = '';
+  for(const c of cases){
+    const el = document.createElement('div');
+    el.className = 'case';
+    el.innerHTML = `
+      <div class="actions">
+        <strong>${escapeHtml(c.name)}</strong>
+        <span class="pill">${c.id.slice(0,8)}</span>
+        ${c.employeeName ? `<span class="pill">${escapeHtml(c.employeeName)}</span>` : ''}
+      </div>
+      <div class="muted small">${escapeHtml(c.spec)} ${c.grep ? `— grep: ${escapeHtml(c.grep)}`: ''}</div>
+      <div class="actions" style="margin-top:8px;">
+        <button data-run="${c.id}">Run</button>
+        <button data-edit="${c.id}">Edit</button>
+        <button data-del="${c.id}">Delete</button>
+      </div>
+    `;
+    el.addEventListener('click', async (e) => {
+      const t = e.target;
+      if(!(t instanceof HTMLElement)) return;
+      if(t.dataset.run){
+        startRun(t.dataset.run);
+      } else if(t.dataset.del){
+        if(confirm('Delete this case?')){
+          await fetchJSON('/api/cases/'+t.dataset.del, { method:'DELETE' });
+          loadCases();
+        }
+      } else if(t.dataset.edit){
+        // super-minimal “edit”: just prefill the form
+        const c2 = cases.find(x => x.id === t.dataset.edit);
+        if(!c2) return;
+        document.getElementById('name').value = c2.name || '';
+        document.getElementById('employeeName').value = c2.employeeName || '';
+        document.getElementById('spec').value = c2.spec || '';
+        document.getElementById('grep').value = c2.grep || '';
+        document.getElementById('actions').value = (c2.actions || []).join(',');
+        document.getElementById('env').value = JSON.stringify(c2.env || {}, null, 0);
       }
+    });
+    $cases.appendChild(el);
+  }
+}
 
-      async function loadRuns() {
-        const { runs } = await (await fetch('/api/runs')).json();
-        runsEl.innerHTML = runs.map(r => `<li><a href="#" data-run="${r}">${r}</a></li>`).join('');
-        [...runsEl.querySelectorAll('a')].forEach(a => a.onclick = async (e) => {
-          e.preventDefault();
-          const runId = a.dataset.run;
-          const { files } = await (await fetch(`/api/runs/${runId}`)).json();
-          filesEl.innerHTML = files.map(f => {
-            if (f.endsWith('.png')) return `<div><img src="/artifacts/${runId}/${f}" style="max-width:480px"></div>`;
-            return `<div><a href="/artifacts/${runId}/${f}" target="_blank">${f}</a></div>`;
-          }).join('');
-        });
-      }
+async function startRun(testCaseId){
+  const res = await fetchJSON('/api/run', {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json' },
+    body: JSON.stringify({ testCaseId })
+  });
+  addRunRow({ runId: res.runId, status:'queued', artifactsUrl: res.artifactsUrl, stream: res.stream });
+  streamRun(res.runId);
+}
 
-      document.getElementById('run').onclick = async () => {
-        logEl.textContent = 'Running...';
-        const headed = document.getElementById('headed').checked;
-        const caseId = casesEl.value;
-        const resp = await fetch('/api/run', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ caseId, headed })
-        });
-        const data = await resp.json();
-        logEl.textContent = data.output || `Exit code: ${data.code}`;
-        loadRuns();
-      };
+function addRunRow(run){
+  const el = document.createElement('div');
+  el.className = 'run';
+  el.id = `run-${run.runId}`;
+  el.innerHTML = `
+    <div><strong>Run:</strong> ${run.runId}</div>
+    <div class="muted small">Artifacts: <a target="_blank" href="${run.artifactsUrl}">${run.artifactsUrl}</a></div>
+    <div class="muted small">Status: <span id="status-${run.runId}">${run.status}</span></div>
+    <pre id="log-${run.runId}"></pre>
+  `;
+  $runs.prepend(el);
+}
 
-      loadCases();
-      loadRuns();
-    </script>
-  </body>
+function streamRun(runId){
+  const ev = new EventSource(`/api/runs/${runId}/stream`);
+  const $log = document.getElementById(`log-${runId}`);
+  const $status = document.getElementById(`status-${runId}`);
+
+  ev.addEventListener('message', (e) => {
+    const { line } = JSON.parse(e.data);
+    $log.textContent += line + '\n';
+    $log.scrollTop = $log.scrollHeight;
+  });
+
+  ev.addEventListener('status', (e) => {
+    const { status } = JSON.parse(e.data);
+    $status.textContent = status;
+  });
+
+  ev.addEventListener('done', (e) => {
+    const { status, exitCode } = JSON.parse(e.data);
+    $status.textContent = `${status} (code ${exitCode})`;
+    ev.close();
+  });
+
+  ev.addEventListener('error', () => {
+    $status.textContent = 'error';
+    ev.close();
+  });
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+// Add case handler
+document.getElementById('addCaseBtn').addEventListener('click', async () => {
+  try {
+    const body = {
+      name: document.getElementById('name').value.trim() || 'Untitled Case',
+      employeeName: document.getElementById('employeeName').value.trim() || undefined,
+      spec: document.getElementById('spec').value.trim() || 'tests/validate-offboarding.spec.ts',
+      grep: document.getElementById('grep').value.trim() || undefined,
+      actions: parseActions(document.getElementById('actions').value),
+      env: parseEnv(document.getElementById('env').value)
+    };
+    await fetchJSON('/api/cases', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify(body)
+    });
+    // clear a couple fields and reload list
+    document.getElementById('name').value = '';
+    document.getElementById('employeeName').value = '';
+    document.getElementById('grep').value = '';
+    document.getElementById('actions').value = '';
+    document.getElementById('env').value = '';
+    await loadCases();
+  } catch (e) {
+    alert('Failed to add case: ' + e.message);
+  }
+});
+
+loadCases();
+</script>
+</body>
 </html>

@@ -1,0 +1,8 @@
+# Test output
+allure-results/
+artifacts/
+test-artifacts/
+test-results/
+*.png
+*.zip
+*.webm
