@@ -3,11 +3,20 @@
   "version": "1.0.0",
   "scripts": {
     "test": "npx playwright test",
-    "report": "npx allure generate ./allure-results --clean -o ./allure-report && npx allure open ./allure-report"
+    "report": "npx allure generate ./allure-results --clean -o ./allure-report && npx allure open ./allure-report",
+    "qa:server": "ts-node --transpile-only server/index.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.43.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.2.0",
     "allure-playwright": "^2.0.0-beta.20",
-    "js-yaml": "^4.1.0"
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "js-yaml": "^4.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "uuid": "^11.1.0"
   }
 }

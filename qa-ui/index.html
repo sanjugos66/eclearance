@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>QA Runner</h2>
+    <div>
+      <label>Case:</label>
+      <select id="case"></select>
+      <label><input type="checkbox" id="headed" checked> Headed</label>
+      <button id="run">Run</button>
+    </div>
+    <pre id="log"></pre>
+
+    <h3>Runs</h3>
+    <ul id="runs"></ul>
+    <div id="files"></div>
+
+    <script>
+      const casesEl = document.getElementById('case');
+      const runsEl = document.getElementById('runs');
+      const filesEl = document.getElementById('files');
+      const logEl = document.getElementById('log');
+
+      async function loadCases() {
+        const { cases } = await (await fetch('/api/cases')).json();
+        casesEl.innerHTML = cases.map(c => `<option>${c}</option>`).join('');
+      }
+
+      async function loadRuns() {
+        const { runs } = await (await fetch('/api/runs')).json();
+        runsEl.innerHTML = runs.map(r => `<li><a href="#" data-run="${r}">${r}</a></li>`).join('');
+        [...runsEl.querySelectorAll('a')].forEach(a => a.onclick = async (e) => {
+          e.preventDefault();
+          const runId = a.dataset.run;
+          const { files } = await (await fetch(`/api/runs/${runId}`)).json();
+          filesEl.innerHTML = files.map(f => {
+            if (f.endsWith('.png')) return `<div><img src="/artifacts/${runId}/${f}" style="max-width:480px"></div>`;
+            return `<div><a href="/artifacts/${runId}/${f}" target="_blank">${f}</a></div>`;
+          }).join('');
+        });
+      }
+
+      document.getElementById('run').onclick = async () => {
+        logEl.textContent = 'Running...';
+        const headed = document.getElementById('headed').checked;
+        const caseId = casesEl.value;
+        const resp = await fetch('/api/run', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ caseId, headed })
+        });
+        const data = await resp.json();
+        logEl.textContent = data.output || `Exit code: ${data.code}`;
+        loadRuns();
+      };
+
+      loadCases();
+      loadRuns();
+    </script>
+  </body>
+</html>
