@@ -1,0 +1,12 @@
+[
+  {
+    "employeeName": "Silbeth Pablo",
+    "expectedOutcome": "blocked",
+    "actions": ["validateOffboarding"]
+  },
+  {
+    "employeeName": "John Doe",
+    "expectedOutcome": "success",
+    "actions": ["validateOffboarding"]
+  }
+]
