@@ -1,0 +1,8 @@
+# Page snapshot
+
+```yaml
+- dialog "Error":
+  - heading "Error" [level=2]
+  - text: User offboarded has no personal email. Unable to generate offboarding ticket.
+  - button "OK"
+```

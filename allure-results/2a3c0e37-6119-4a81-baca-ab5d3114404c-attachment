@@ -1,0 +1,180 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - navigation:
+    - strong
+    - list:
+      - listitem:
+        - link " Admin":
+          - /url: /admin
+      - listitem:
+        - link " Home (current)":
+          - /url: /home
+      - listitem:
+        - link " Directory":
+          - /url: /directory
+      - listitem:
+        - link " Drive":
+          - /url: /drive
+      - listitem:
+        - link " Staff Center":
+          - /url: /staff-center
+      - listitem:
+        - link " Extras":
+          - /url: /extras
+      - listitem:
+        - link " Facilities":
+          - /url: /facilities
+      - listitem:
+        - link " Learning":
+          - /url: /learning
+    - list:
+      - listitem "Tickets": 
+    - list:
+      - listitem "Notifications": 
+    - list:
+      - listitem "Events": 
+    - list:
+      - listitem "Birthdays": 
+    - list:
+      - listitem "Sanju"
+    - list:
+      - listitem "Logout": 
+- main:
+  - img
+  - text: Sanju  2463 ● sgoswami@connextglobal.com  Sprout Login  My Spaces
+  - separator
+  - group:
+    - text: Quick Links
+    - link "":
+      - /url: /admin/quick-link
+  - group:
+    - text: My Links
+    - link "":
+      - /url: /staff-center/my-info?tab=account-settings
+  - text: Working . . .
+  - link " My Information":
+    - /url: /staff-center/my-info
+  - img
+  - text: My Information
+  - heading " My Information  Refresh Statistics" [level=5]
+  - text:  Downtime Log 0  HR Change Request 0  Payroll Disputes 0  Coaching Record 0  Corrective Action 0  My Teams 0
+  - tablist:
+    - listitem:
+      - tab " My Information" [selected]
+    - listitem:
+      - tab " Downtime"
+    - listitem:
+      - tab " People and Culture"
+    - listitem:
+      - tab " Payroll"
+    - listitem:
+      - tab " Coaching Records"
+    - listitem:
+      - tab " Corrective Actions"
+    - listitem:
+      - tab " Referrals"
+    - listitem:
+      - tab " My Tickets"
+    - listitem:
+      - tab " My Teams"
+    - listitem:
+      - tab " Account Settings"
+  - tabpanel:
+    - heading " Personal Details" [level=2]
+    - img
+    - text:  Upload a photo…  Please be guided that the uploaded photo will be used for corporate purposes.  Make sure the image is clear, dimension is square, your face in the frame is in the center.  File size limit is up to 20KB. Compress your image before uploading. Recommended dimension is 128px by 128px.  See this
+    - link "guide":
+      - /url: ""
+    - text: on how to compress image. Personal Information Employee ID
+    - textbox [disabled]
+    - text: User ID
+    - textbox [disabled]
+    - text: Email
+    - textbox [disabled]
+    - text: Username
+    - textbox [disabled]
+    - text: First Name
+    - textbox [disabled]
+    - text: Middle Name
+    - textbox [disabled]
+    - text: Last Name
+    - textbox [disabled]
+    - text: Nick Name
+    - textbox [disabled]
+    - text: Date of Birth 
+    - textbox [disabled]
+    - text: Sex (Legal)
+    - textbox [disabled]
+    - text: Contact (HR)
+    - textbox [disabled]
+    - text: Address (HR)
+    - textbox [disabled]
+    - text: Client Information Client Name
+    - textbox
+    - text: Client POC 
+    - textbox
+    - text: Client Email 
+    - textbox
+    - text: Client Timezone 
+    - combobox:
+      - option "Select a time zone" [disabled] [selected]
+      - option "(GMT-12:00) International Date Line West"
+      - option "(GMT-11:00) Midway Island, Samoa"
+      - option "(GMT-10:00) Hawaii"
+      - option "(GMT-09:00) Alaska"
+      - option "(GMT-08:00) Pacific Time (US & Canada)"
+      - option "(GMT-07:00) Mountain Time (US & Canada)"
+      - option "(GMT-06:00) Central Time (US & Canada), Mexico City"
+      - option "(GMT-05:00) Eastern Time (US & Canada), Bogota"
+      - option "(GMT-04:00) Atlantic Time (Canada), Caracas"
+      - option "(GMT-03:00) Buenos Aires, Greenland"
+      - option "(GMT-02:00) Mid-Atlantic"
+      - option "(GMT-01:00) Azores, Cape Verde Islands"
+      - option "(GMT+00:00) London, Lisbon, Casablanca"
+      - option "(GMT+01:00) Berlin, Paris, Madrid, Rome"
+      - option "(GMT+02:00) Cairo, Johannesburg, Istanbul"
+      - option "(GMT+03:00) Moscow, Nairobi, Baghdad"
+      - option "(GMT+04:00) Dubai, Baku, Tbilisi"
+      - option "(GMT+05:00) Islamabad, Karachi, Tashkent"
+      - option "(GMT+06:00) Dhaka, Almaty"
+      - option "(GMT+07:00) Bangkok, Hanoi, Jakarta"
+      - option "(GMT+08:00) Manila, Beijing, Singapore, Perth"
+      - option "(GMT+09:00) Tokyo, Seoul, Yakutsk"
+      - option "(GMT+10:00) Sydney, Guam"
+      - option "(GMT+11:00) Solomon Islands, New Caledonia"
+      - option "(GMT+12:00) Auckland, Fiji"
+    - text: Utility Providers ISP 
+    - textbox
+    - text: Backup ISP 
+    - textbox
+    - text: Electric Provider 
+    - textbox
+    - text: Employment Details Department
+    - textbox [disabled]
+    - text: Client
+    - textbox [disabled]
+    - text: Manager
+    - textbox [disabled]
+    - text: Supervisor
+    - textbox [disabled]
+    - text: Position
+    - textbox [disabled]
+    - text: Status
+    - textbox [disabled]
+    - text: Start date
+    - textbox [disabled]
+    - text: Regularization date
+    - textbox [disabled]
+    - separator
+    - text: "NOTE: MegaToolTest is relying solely on the HR Information System with regard to the data enclosed in this form. Should you notice an incorrect entry, kindly reach out to our HR Personnel."
+    - button " Save Changes"
+    - text: Fetching records . . .
+  - text: MegaToolTest ● Version 2.4.11 ● 06-Aug-2025 PST TO-DO Space  Learning  09:15 AM
+  - img "ph flag"
+  - text: 08:15 PM
+  - img "us flag"
+  - text: 03:15 PM
+  - img "us flag"
+```

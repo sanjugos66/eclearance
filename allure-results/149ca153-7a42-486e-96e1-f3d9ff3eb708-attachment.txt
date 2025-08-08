@@ -1,0 +1,2 @@
+🧠 Modal appeared during after prerequisite 1 select: ?!i  Error×Cycle detected in department hierarchy.OKCancel
+✅ Modal closed after after prerequisite 1 select

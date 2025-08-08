@@ -1,0 +1,5 @@
+🔍 Dropdown options for "Chicco": []
+⚠️ Fallback: no exact match found for 'Chicco, Samantha May', using ArrowDown/Enter
+📋 Final combobox value: 
+🆗 Ticket visible for Chicco, Samantha May
+✅ Ticket created for: Chicco, Samantha May

@@ -1,0 +1,14 @@
+🕒 Test started: 5:53:58 PM
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff?tab=offboarding
+🧠 Modal appeared during after confirm role assignment: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+✅ Modal closed after after confirm role assignment
+🧠 Modal appeared during after prerequisite 2 confirm: ?!i  Error×User offboarded has no personal email. Unable to generate offboarding ticket.OKCancel
+✅ Modal closed after after prerequisite 2 confirm
+⚠️ Page closed unexpectedly during offboarding for Silbeth Pablo
+🚪 Page closed immediately after final confirm
+🧠 Final modal text before close: ?!i  Error×User offboarded has no personal email. Unable to generate offboarding ticket.OKCancel
+❌ Final block: Cannot route Silbeth Pablo — ?!i  Error×User offboarded has no personal email. Unable to generate offboarding ticket.OKCancel
+✅ Waiting 10s then exiting...

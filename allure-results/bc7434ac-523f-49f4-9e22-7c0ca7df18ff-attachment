@@ -1,0 +1,648 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - navigation:
+    - strong
+    - list:
+      - listitem:
+        - link " Admin":
+          - /url: /admin
+      - listitem:
+        - link " Home (current)":
+          - /url: /home
+      - listitem:
+        - link " Directory":
+          - /url: /directory
+      - listitem:
+        - link " Drive":
+          - /url: /drive
+      - listitem:
+        - link " Staff Center":
+          - /url: /staff-center
+      - listitem:
+        - link " Extras":
+          - /url: /extras
+      - listitem:
+        - link " Facilities":
+          - /url: /facilities
+      - listitem:
+        - link " Learning":
+          - /url: /learning
+      - listitem:
+        - link "Reports":
+          - /url: /report/connext-precision-track
+    - list:
+      - listitem "Tickets": 
+    - list:
+      - listitem "Notifications":  5
+    - list:
+      - listitem "Events": 
+    - list:
+      - listitem "Birthdays": 
+    - list:
+      - listitem "Sanju"
+    - list:
+      - listitem "Logout": 
+- main:
+  - img
+  - text: Sanju  2463 ● sgoswami@connextglobal.com  Sprout Login  My Spaces
+  - separator
+  - group:
+    - text: Quick Links
+    - link "":
+      - /url: /admin/quick-link
+    - link " Sprout":
+      - /url: https://connext.hrhub.ph/LogIn.aspx
+    - link " Connext Edge":
+      - /url: https://edge.connextglobal.com/
+    - link " Time Tracker Quick Guide ⚡":
+      - /url: /drive/file/time-tracker-quick-guide
+    - link " Downtime Log":
+      - /url: /staff-center/my-info?tab=downtime-logs
+    - link " Change MegaTool Profile Pic":
+      - /url: /drive/file/megatool-profile-picture-change---guide
+  - group:
+    - text: My Links
+    - link "":
+      - /url: /staff-center/my-info?tab=account-settings
+  - link " My Information":
+    - /url: /staff-center/my-info
+  - link " My Staff":
+    - /url: /staff-center/my-staff
+  - link " Settings":
+    - /url: /staff-center/settings
+  - img
+  - text: My Staff
+  - heading " My Staff Staff Management Area" [level=5]
+  - tablist:
+    - listitem:
+      - tab " Search" [selected]
+    - listitem:
+      - tab " Team Members" [selected]
+    - listitem:
+      - tab " Monitoring" [selected]
+    - listitem:
+      - tab " Time Tracking"
+    - listitem:
+      - tab " Downtime"
+    - listitem:
+      - tab " People and Culture"
+    - listitem:
+      - tab " Payroll"
+    - listitem:
+      - tab " Coaching Records"
+    - listitem:
+      - tab " Corrective Actions"
+    - listitem:
+      - tab " CNOW"
+    - listitem:
+      - tab " Offboarding"
+    - listitem:
+      - tab " Bill Rate Computation"
+  - tabpanel:
+    - heading " Offboarding Dashboard" [level=2]
+    - text:  My Assignments  People Systems View  Payroll View  People BP View  Table view  Create offboarding ticket  Settings  Scroll to view
+    - 'heading "People Systems View Sort By: By Last Updated" [level=2]':
+      - text: "People Systems View Sort By:"
+      - combobox:
+        - option "By Last Updated" [selected]
+        - option "Age after signing of TM/on behalf"
+        - option "Age of separation date"
+    - textbox "Search": pablo
+    - text:  Action Items 2  Refresh
+    - heading "Pending (193)" [level=4]
+    - paragraph: Ref# 258
+    - img "Employee Image"
+    - paragraph: John Renar Macalino
+    - paragraph: 1921 • Customer Support Specialist 4
+    - table:
+      - rowgroup:
+        - row "Separation Date Feb 1, 2024":
+          - cell "Separation Date"
+          - cell "Feb 1, 2024"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 259
+    - img "Employee Image"
+    - paragraph: Gaucho Agregado
+    - paragraph: 2105 • QA and Automation Engineer
+    - table:
+      - rowgroup:
+        - row "Separation Date May 17, 2024":
+          - cell "Separation Date"
+          - cell "May 17, 2024"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 261
+    - img "Employee Image"
+    - paragraph: Jovane Luis Acebedo
+    - paragraph: 2082 • Team Leader 2
+    - table:
+      - rowgroup:
+        - row "Separation Date Apr 12, 2024":
+          - cell "Separation Date"
+          - cell "Apr 12, 2024"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 262
+    - img "Employee Image"
+    - paragraph: Jenny Rose Abalos
+    - paragraph: 1947 • Senior Team Member
+    - table:
+      - rowgroup:
+        - row "Separation Date N/A":
+          - cell "Separation Date"
+          - cell "N/A"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 263
+    - img "Employee Image"
+    - paragraph: Vicpaulo Abalos
+    - paragraph: 2191 • Technical Support Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date Dec 14, 2023":
+          - cell "Separation Date"
+          - cell "Dec 14, 2023"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 264
+    - img "Employee Image"
+    - paragraph: Roxanne Abad
+    - paragraph: 3926 • Data Entry Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date N/A":
+          - cell "Separation Date"
+          - cell "N/A"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 265
+    - img "Employee Image"
+    - paragraph: Maritess Acu
+    - paragraph: 255 • Financial Controller
+    - table:
+      - rowgroup:
+        - row "Separation Date Mar 15, 2020":
+          - cell "Separation Date"
+          - cell "Mar 15, 2020"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 266
+    - img "Employee Image"
+    - paragraph: Dyan Valerie Abanilla-Lasan
+    - paragraph: 2069 • Accounting Associate 2
+    - table:
+      - rowgroup:
+        - row "Separation Date N/A":
+          - cell "Separation Date"
+          - cell "N/A"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 267
+    - img "Employee Image"
+    - paragraph: Donnabelle Abarra
+    - paragraph: 436 • Medical Billing Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date May 6, 2021":
+          - cell "Separation Date"
+          - cell "May 6, 2021"
+    - paragraph: (13 days ago)
+    - paragraph: Ref# 268
+    - img "Employee Image"
+    - paragraph: Sanju Goswami
+    - paragraph: 2463 • Director of IT and Development
+    - table:
+      - rowgroup:
+        - row "Separation Date N/A":
+          - cell "Separation Date"
+          - cell "N/A"
+    - paragraph: (13 days ago)
+    - heading "In Progress (48)" [level=4]
+    - paragraph: Ref# 39
+    - img "Employee Image"
+    - paragraph: Michael John Galang
+    - paragraph: 3590 • Mortgage Loan Processor
+    - table:
+      - rowgroup:
+        - row "Separation Date Feb 13, 2025":
+          - cell "Separation Date"
+          - cell "Feb 13, 2025"
+        - row "Signed 4 months ago":
+          - cell "Signed"
+          - cell "4 months ago"
+        - row "Expedite Date Apr 26, 2025":
+          - cell "Expedite Date"
+          - cell "Apr 26, 2025"
+    - text: Completed 100%
+    - table:
+      - rowgroup:
+        - row "Pending Completion":
+          - cell "Pending"
+          - cell "Completion"
+    - button "See More"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 138
+    - img "Employee Image"
+    - paragraph: Francis Nanquil
+    - paragraph: 3622 • Tier 2 Service Desk Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date Apr 8, 2025":
+          - cell "Separation Date"
+          - cell "Apr 8, 2025"
+        - row "Signed 3 months ago":
+          - cell "Signed"
+          - cell "3 months ago"
+        - row "Expedite Date May 24, 2025":
+          - cell "Expedite Date"
+          - cell "May 24, 2025"
+    - text: In Progress... 7%
+    - table:
+      - rowgroup:
+        - row "In Progress Clr. Sign - Carlo Balagtas | Team Leader":
+          - cell "In Progress"
+          - cell "Clr. Sign - Carlo Balagtas | Team Leader"
+    - button "See More"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 58
+    - img "Employee Image"
+    - paragraph: Anton Kiel Dela Cruz
+    - paragraph: 3734 • Medical Billing Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date Feb 25, 2025":
+          - cell "Separation Date"
+          - cell "Feb 25, 2025"
+        - row "Signed 3 months ago":
+          - cell "Signed"
+          - cell "3 months ago"
+        - row "Expedite Date May 31, 2025":
+          - cell "Expedite Date"
+          - cell "May 31, 2025"
+    - text: In Progress... 7%
+    - table:
+      - rowgroup:
+        - row "In Progress Clr. Sign - Mary Kris Maniaul | Team Leader":
+          - cell "In Progress"
+          - cell "Clr. Sign - Mary Kris Maniaul | Team Leader"
+    - button "See More"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 137
+    - img "Employee Image"
+    - paragraph: Jessa May Naldo
+    - paragraph: 3793 • Customer Support Specialist 4
+    - table:
+      - rowgroup:
+        - row "Separation Date Apr 9, 2025":
+          - cell "Separation Date"
+          - cell "Apr 9, 2025"
+        - row "Signed 3 months ago":
+          - cell "Signed"
+          - cell "3 months ago"
+        - row "Expedite Date Jun 07, 2025":
+          - cell "Expedite Date"
+          - cell "Jun 07, 2025"
+    - text: In Progress... 7%
+    - table:
+      - rowgroup:
+        - row "In Progress Clr. Sign - Joann Paras | Team Leader":
+          - cell "In Progress"
+          - cell "Clr. Sign - Joann Paras | Team Leader"
+    - button "See More"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 279
+    - img "Employee Image"
+    - paragraph: Jennifer Cabrera
+    - paragraph: 3004 • ServiceNow Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jul 7, 2025":
+          - cell "Separation Date"
+          - cell "Jul 7, 2025"
+        - row "Signed 2 days ago":
+          - cell "Signed"
+          - cell "2 days ago"
+    - text: In Progress... 88%
+    - table:
+      - rowgroup:
+        - row "Pending Payroll Final Pay Email":
+          - cell "Pending"
+          - cell "Payroll Final Pay Email"
+    - button "See More"
+    - paragraph: (2 days ago)
+    - paragraph: Ref# 257
+    - img "Employee Image"
+    - paragraph: John Patrick Carlos
+    - paragraph: 3322 • Operations Manager
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 10, 2025":
+          - cell "Separation Date"
+          - cell "Jun 10, 2025"
+        - row "Signed":
+          - cell "Signed"
+          - cell
+    - text: In Progress... 0%
+    - table:
+      - rowgroup:
+        - row "Pending TM Clearance Signature":
+          - cell "Pending"
+          - cell "TM Clearance Signature"
+    - button "See More"
+    - paragraph: (13 days ago)
+    - paragraph: Ref# 51
+    - img "Employee Image"
+    - paragraph: Joy Aleen Castillo
+    - paragraph: 3277 • System Administrator
+    - table:
+      - rowgroup:
+        - row "Separation Date Mar 8, 2025":
+          - cell "Separation Date"
+          - cell "Mar 8, 2025"
+        - row "Signed 3 months ago":
+          - cell "Signed"
+          - cell "3 months ago"
+    - text: In Progress... 36%
+    - table:
+      - rowgroup:
+        - row "In Progress Clr. Sign - Sydney Tatoy | Connext University":
+          - cell "In Progress"
+          - cell "Clr. Sign - Sydney Tatoy | Connext University"
+        - row "In Progress Clr. Sign - Ellaine Alamares | Employee Benefits":
+          - cell "In Progress"
+          - cell "Clr. Sign - Ellaine Alamares | Employee Benefits"
+    - button "See More"
+    - paragraph: (13 days ago)
+    - paragraph: Ref# 256
+    - img "Employee Image"
+    - paragraph: Johndel Canda
+    - paragraph: 2274 • Senior Accounting Associate
+    - table:
+      - rowgroup:
+        - row "Separation Date Feb 3, 2024":
+          - cell "Separation Date"
+          - cell "Feb 3, 2024"
+        - row "Signed":
+          - cell "Signed"
+          - cell
+    - text: In Progress... 0%
+    - table:
+      - rowgroup:
+        - row "Pending TM Clearance Signature":
+          - cell "Pending"
+          - cell "TM Clearance Signature"
+    - button "See More"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 260
+    - img "Employee Image"
+    - paragraph: Edwin Amante Jr
+    - paragraph: 2721 • Property Management Virtual Assistant
+    - table:
+      - rowgroup:
+        - row "Separation Date Nov 22, 2023":
+          - cell "Separation Date"
+          - cell "Nov 22, 2023"
+        - row "Signed":
+          - cell "Signed"
+          - cell
+    - text: In Progress... 0%
+    - table:
+      - rowgroup:
+        - row "Pending TM Clearance Signature":
+          - cell "Pending"
+          - cell "TM Clearance Signature"
+    - button "See More"
+    - paragraph: (16 days ago)
+    - paragraph: Ref# 60
+    - img "Employee Image"
+    - paragraph: Rachel Anne Lei Barrozo
+    - paragraph: 3191 • Patient Care Coordinator
+    - table:
+      - rowgroup:
+        - row "Separation Date N/A":
+          - cell "Separation Date"
+          - cell "N/A"
+        - row "Signed":
+          - cell "Signed"
+          - cell
+    - text: In Progress... 0%
+    - table:
+      - rowgroup:
+        - row "Pending TM Clearance Signature":
+          - cell "Pending"
+          - cell "TM Clearance Signature"
+    - button "See More"
+    - paragraph: (2 months ago)
+    - heading "Completed (17)" [level=4]
+    - text: "2"
+    - paragraph: Ref# 59
+    - img "Employee Image"
+    - paragraph: Michael Anthony Besid
+    - paragraph: 3860 • Team Leader
+    - table:
+      - rowgroup:
+        - row "Separation Date Feb 19, 2025":
+          - cell "Separation Date"
+          - cell "Feb 19, 2025"
+    - paragraph: (2 months ago)
+    - text: "3"
+    - paragraph: Ref# 197
+    - img "Employee Image"
+    - paragraph: Adam Magat
+    - paragraph: 4029 • Sr. Accounting Manager
+    - table:
+      - rowgroup:
+        - row "Separation Date Apr 12, 2025":
+          - cell "Separation Date"
+          - cell "Apr 12, 2025"
+    - paragraph: (2 months ago)
+    - paragraph: Ref# 91
+    - img "Employee Image"
+    - paragraph: Marjorie Simpkins
+    - paragraph: 2538 • Customer Support Specialist 4
+    - table:
+      - rowgroup:
+        - row "Separation Date Mar 20, 2025":
+          - cell "Separation Date"
+          - cell "Mar 20, 2025"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 100
+    - img "Employee Image"
+    - paragraph: Sunshine Reyes
+    - paragraph: 3822 • Claims Resolution Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date Mar 25, 2025":
+          - cell "Separation Date"
+          - cell "Mar 25, 2025"
+    - paragraph: (3 months ago)
+    - text: "1"
+    - paragraph: Ref# 15
+    - img "Employee Image"
+    - paragraph: Frederick Mayuga
+    - paragraph: 2350 • Accounting Associate
+    - table:
+      - rowgroup:
+        - row "Separation Date Feb 9, 2023":
+          - cell "Separation Date"
+          - cell "Feb 9, 2023"
+    - paragraph: (4 months ago)
+    - text: "8"
+    - paragraph: Ref# 25
+    - img "Employee Image"
+    - paragraph: Andrea May Perez
+    - paragraph: 3477 • Senior Accountant 1
+    - table:
+      - rowgroup:
+        - row "Separation Date Mar 6, 2025":
+          - cell "Separation Date"
+          - cell "Mar 6, 2025"
+    - paragraph: (4 months ago)
+    - text: "1"
+    - paragraph: Ref# 19
+    - img "Employee Image"
+    - paragraph: Ma. Caselyn Pausal
+    - paragraph: 15 • Accounting Associate 2
+    - table:
+      - rowgroup:
+        - row "Separation Date May 16, 2024":
+          - cell "Separation Date"
+          - cell "May 16, 2024"
+    - paragraph: (4 months ago)
+    - paragraph: Ref# 32
+    - img "Employee Image"
+    - paragraph: Joenneth Bagtong
+    - paragraph: 2723 • Healthcare Support Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date Feb 21, 2025":
+          - cell "Separation Date"
+          - cell "Feb 21, 2025"
+    - paragraph: (5 months ago)
+    - paragraph: Ref# 75
+    - img "Employee Image"
+    - paragraph: Adrian Labiang
+    - paragraph: 96 • Team Leader
+    - table:
+      - rowgroup:
+        - row "Separation Date Mar 11, 2020":
+          - cell "Separation Date"
+          - cell "Mar 11, 2020"
+    - paragraph: (5 months ago)
+    - paragraph: Ref# 20
+    - img "Employee Image"
+    - paragraph: Jim Andrew Zantua
+    - paragraph: 65 • Customer Support Specialist 2
+    - table:
+      - rowgroup:
+        - row "Separation Date Apr 3, 2022":
+          - cell "Separation Date"
+          - cell "Apr 3, 2022"
+    - paragraph: (5 months ago)
+    - heading "Cancelled" [level=4]
+    - text: "3"
+    - paragraph: Ref# 233
+    - img "Employee Image"
+    - paragraph: Juan Dela Cruz
+    - paragraph: 777 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 5, 2025":
+          - cell "Separation Date"
+          - cell "Jun 5, 2025"
+    - paragraph: (2 months ago)
+    - paragraph: Ref# 232
+    - img "Employee Image"
+    - paragraph: Juan Dela Cruz
+    - paragraph: 777 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 5, 2025":
+          - cell "Separation Date"
+          - cell "Jun 5, 2025"
+    - paragraph: (2 months ago)
+    - paragraph: Ref# 231
+    - img "Employee Image"
+    - paragraph: Juan Dela Cruz
+    - paragraph: 777 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 5, 2025":
+          - cell "Separation Date"
+          - cell "Jun 5, 2025"
+    - paragraph: (2 months ago)
+    - paragraph: Ref# 230
+    - img "Employee Image"
+    - paragraph: Juan Dela Cruz
+    - paragraph: 777 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 5, 2025":
+          - cell "Separation Date"
+          - cell "Jun 5, 2025"
+    - paragraph: (2 months ago)
+    - paragraph: Ref# 229
+    - img "Employee Image"
+    - paragraph: Juan Dela Cruz
+    - paragraph: 777 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 5, 2025":
+          - cell "Separation Date"
+          - cell "Jun 5, 2025"
+    - paragraph: (2 months ago)
+    - paragraph: Ref# 164
+    - img "Employee Image"
+    - paragraph: Miguel Paolo Lumbang
+    - paragraph: 208 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 15, 2024":
+          - cell "Separation Date"
+          - cell "Jun 15, 2024"
+    - paragraph: (3 months ago)
+    - text: "1"
+    - paragraph: Ref# 163
+    - img "Employee Image"
+    - paragraph: Miguel Paolo Lumbang
+    - paragraph: 208 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 15, 2024":
+          - cell "Separation Date"
+          - cell "Jun 15, 2024"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 162
+    - img "Employee Image"
+    - paragraph: Miguel Paolo Lumbang
+    - paragraph: 208 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 15, 2024":
+          - cell "Separation Date"
+          - cell "Jun 15, 2024"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 161
+    - img "Employee Image"
+    - paragraph: Miguel Paolo Lumbang
+    - paragraph: 208 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 15, 2024":
+          - cell "Separation Date"
+          - cell "Jun 15, 2024"
+    - paragraph: (3 months ago)
+    - paragraph: Ref# 160
+    - img "Employee Image"
+    - paragraph: Miguel Paolo Lumbang
+    - paragraph: 208 • Applications Developer
+    - table:
+      - rowgroup:
+        - row "Separation Date Jun 15, 2024":
+          - cell "Separation Date"
+          - cell "Jun 15, 2024"
+    - paragraph: (3 months ago)
+  - text: MegaToolTest ● Version 2.4.11 ● 06-Aug-2025 PST
+  - button " Update MegaTool"
+  - text: TO-DO Space  Learning  08:44 AM
+  - img "ph flag"
+  - text: 07:44 PM
+  - img "us flag"
+  - text: 02:44 PM
+  - img "us flag"
+```

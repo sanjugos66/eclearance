@@ -1,0 +1,3 @@
+🔍 Dropdown options for "Chicco": []
+⚠️ Fallback: no exact match found for 'Chicco, Samantha May', using ArrowDown/Enter
+📋 Final combobox value: Chicco

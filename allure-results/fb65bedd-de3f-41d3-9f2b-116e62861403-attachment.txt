@@ -1,0 +1,15 @@
+🕒 Test started: 6:39:14 PM
+🕒 Test started at 6:39:17 PM
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff?tab=offboarding
+🧠 Modal appeared during after confirm role assignment: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+🔘 Clicking modal button: Cancel
+✅ Modal closed after after confirm role assignment
+🧠 Modal appeared during after prerequisite 2 confirm: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+🔘 Clicking modal button: Cancel
+✅ Modal closed after after prerequisite 2 confirm
+⚠️ Page closed unexpectedly during offboarding for Silbeth Pablo
+🚪 Page closed immediately after final confirm
+🧠 Final modal text before close: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel

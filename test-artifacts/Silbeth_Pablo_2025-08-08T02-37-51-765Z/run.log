@@ -1,0 +1,8 @@
+[8:37:51 PM] 🕒 start run for Silbeth Pablo
+[8:37:51 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center
+[8:37:51 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+[8:37:56 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center/my-staff
+[8:37:57 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center/my-staff?tab=offboarding
+[8:38:06 PM] 🧠 Error dialog: ?!i  Error×User offboarded has no personal email. Unable to generate offboarding ticket.OKCancel
+[8:38:06 PM] ✅ OK on error dialog clicked
+[8:38:07 PM] ✅ Finished flow and closed context intentionally

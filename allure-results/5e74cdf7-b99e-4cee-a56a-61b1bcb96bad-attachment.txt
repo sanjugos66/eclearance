@@ -1,0 +1,4 @@
+🔍 Dropdown options for "Chicco": []
+⚠️ Fallback: no exact match for 'Chicco, Samantha May', using ArrowDown/Enter
+❌ Retry failed — no valid selection made for Chicco, Samantha May
+❌ Failed: Chicco, Samantha May was not selected properly.

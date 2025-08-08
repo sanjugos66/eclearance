@@ -1,0 +1,11 @@
+🔍 Dropdown options for "Miranda": [
+  'Miranda, Garbeth Pamintuan (garbeth@connext.solutions)\n' +
+    'User ID: 648 | Employee ID: 2165',
+  'Miranda, Michael Angelo Tuazon (michael.m@connext.solutions)\n' +
+    'User ID: 216 | Employee ID: 364',
+  'Ramos, Kelly Andrew Miranda (kelly@connext.solutions)\n' +
+    'User ID: 71 | Employee ID: 177'
+]
+✅ Hover + click on matched item: Miranda, Garbeth Pamintuan
+❌ Error modal appeared: ?!i  Error×User already has an active offboarding ticket.OKCancel
+⚠️ Skipped: Miranda, Garbeth Pamintuan already has an active offboarding ticket.

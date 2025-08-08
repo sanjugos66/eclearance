@@ -1,0 +1,5 @@
+🔍 Dropdown options for "Pablo": []
+⚠️ Fallback: no exact match found for 'Pablo, Silbeth Famisaran', using ArrowDown/Enter
+📋 Final combobox value: 
+⚠️ Ticket not visible for Pablo, Silbeth Famisaran — might not have saved.
+✅ Ticket created for: Pablo, Silbeth Famisaran

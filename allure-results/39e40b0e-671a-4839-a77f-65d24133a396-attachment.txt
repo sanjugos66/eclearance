@@ -1,0 +1,9 @@
+🧠 Modal appeared during after confirm role assignment: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+✅ Modal closed after after confirm role assignment
+🧠 Modal appeared during after prerequisite 2 confirm: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+✅ Modal closed after after prerequisite 2 confirm
+⚠️ Page closed unexpectedly during offboarding for Silbeth Pablo
+🧪 Final visible divs:
+
+⚠️ Could not capture final screenshot — page may have closed: page.screenshot: Target page, context or browser has been closed
+✅ Offboarding for Silbeth Pablo validated and routed.

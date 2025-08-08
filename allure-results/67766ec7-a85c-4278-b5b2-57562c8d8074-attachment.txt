@@ -1,0 +1,13 @@
+🔍 Dropdown options for "Pablo": [
+  'Ospina Londoño, Juan Pablo (jlondono@connext.solutions)\n' +
+    'User ID: 2016 | Employee ID: 3235',
+  'Pablo, Razzel Corpuz (razzel@connext.solutions)\n' +
+    'User ID: 105 | Employee ID: 246',
+  'Pablo, Silbeth Famisaran (silbeth@connext.solutions)\n' +
+    'User ID: 1196 | Employee ID: 2711',
+  'Velasquez, Amadeo Pablo (amadeo@connext.solutions)\n' +
+    'User ID: 693 | Employee ID: 2209'
+]
+✅ Hover + click on matched item: Pablo, Silbeth Famisaran
+📋 Confirmed selection text: 
+❌ Dropdown selection not bound correctly for Pablo, Silbeth Famisaran

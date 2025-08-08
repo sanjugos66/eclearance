@@ -1,0 +1,399 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - navigation:
+    - strong
+    - list:
+      - listitem:
+        - link " Admin":
+          - /url: /admin
+      - listitem:
+        - link " Home (current)":
+          - /url: /home
+      - listitem:
+        - link " Directory":
+          - /url: /directory
+      - listitem:
+        - link " Drive":
+          - /url: /drive
+      - listitem:
+        - link " Staff Center":
+          - /url: /staff-center
+      - listitem:
+        - link " Extras":
+          - /url: /extras
+      - listitem:
+        - link " Facilities":
+          - /url: /facilities
+      - listitem:
+        - link " Learning":
+          - /url: /learning
+      - listitem:
+        - link "Reports":
+          - /url: /report/connext-precision-track
+    - list:
+      - listitem "Tickets": 
+    - list:
+      - listitem "Notifications":  5
+    - list:
+      - listitem "Events": 
+    - list:
+      - listitem "Birthdays": 
+    - list:
+      - listitem "Sanju"
+    - list:
+      - listitem "Logout": 
+- main:
+  - img
+  - text: Sanju  2463 ● sgoswami@connextglobal.com  Sprout Login  My Spaces
+  - separator
+  - group:
+    - text: Quick Links
+    - link "":
+      - /url: /admin/quick-link
+    - link " Sprout":
+      - /url: https://connext.hrhub.ph/LogIn.aspx
+    - link " Connext Edge":
+      - /url: https://edge.connextglobal.com/
+    - link " Time Tracker Quick Guide ⚡":
+      - /url: /drive/file/time-tracker-quick-guide
+    - link " Downtime Log":
+      - /url: /staff-center/my-info?tab=downtime-logs
+    - link " Change MegaTool Profile Pic":
+      - /url: /drive/file/megatool-profile-picture-change---guide
+  - group:
+    - text: My Links
+    - link "":
+      - /url: /staff-center/my-info?tab=account-settings
+  - link " My Information":
+    - /url: /staff-center/my-info
+  - link " My Staff":
+    - /url: /staff-center/my-staff
+  - link " Settings":
+    - /url: /staff-center/settings
+  - img
+  - text: My Staff
+  - heading " My Staff Staff Management Area" [level=5]
+  - tablist:
+    - listitem:
+      - tab " Search" [selected]
+    - listitem:
+      - tab " Team Members" [selected]
+    - listitem:
+      - tab " Monitoring" [selected]
+    - listitem:
+      - tab " Time Tracking"
+    - listitem:
+      - tab " Downtime"
+    - listitem:
+      - tab " People and Culture"
+    - listitem:
+      - tab " Payroll"
+    - listitem:
+      - tab " Coaching Records"
+    - listitem:
+      - tab " Corrective Actions"
+    - listitem:
+      - tab " CNOW"
+    - listitem:
+      - tab " Offboarding"
+    - listitem:
+      - tab " Bill Rate Computation"
+  - tabpanel:
+    - heading " Offboarding Dashboard" [level=2]
+    - text:  My Assignments  People Systems View  Payroll View  People BP View  Table view  Create offboarding ticket  Settings  Scroll to view
+    - 'heading "People Systems View Sort By: By Last Updated" [level=2]':
+      - text: "People Systems View Sort By:"
+      - combobox:
+        - option "By Last Updated" [selected]
+        - option "Age after signing of TM/on behalf"
+        - option "Age of separation date"
+    - textbox "Search": pablo
+    - text:  Action Items 2  Refresh
+    - heading "Pending (3)" [level=4]
+    - paragraph: Ref# 334
+    - img "Employee Image"
+    - paragraph: Amadeo Velasquez
+    - paragraph: 2209 • Service Desk Analyst
+    - table:
+      - rowgroup:
+        - row "Separation Date Jul 29, 2025":
+          - cell "Separation Date"
+          - cell "Jul 29, 2025"
+    - paragraph: (6 days ago)
+    - paragraph: Ref# 337
+    - img "Employee Image"
+    - paragraph: Razzel Pablo
+    - paragraph: 246 • Medical Credentialing Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date Jul 28, 2020":
+          - cell "Separation Date"
+          - cell "Jul 28, 2020"
+    - paragraph: (4 days ago)
+    - paragraph: Ref# 339
+    - img "Employee Image"
+    - paragraph: Silbeth Pablo
+    - paragraph: 2711 • Medical Billing Specialist
+    - table:
+      - rowgroup:
+        - row "Separation Date N/A":
+          - cell "Separation Date"
+          - cell "N/A"
+    - paragraph: (3 days ago)
+    - heading "In Progress (0)" [level=4]
+    - heading "Completed (0)" [level=4]
+    - heading "Cancelled" [level=4]
+    - document:
+      - text: "#339"
+      - heading "EMPLOYEE OFFBOARDING" [level=5]
+      - button "Close"
+      - text: Employee Details
+      - img "Employee Image"
+      - paragraph: "Name: Silbeth Pablo"
+      - paragraph: "Employee ID: 2711"
+      - paragraph:
+        - text: "Personal Email: N/A"
+        - button ""
+        - button ""
+      - paragraph: "Supervisor: Marvin David"
+      - paragraph: "Manager: Marvin David"
+      - paragraph: "Business Unit: Healthcare Services"
+      - paragraph: "Client/Assignment: Sharp Management Group"
+      - paragraph: "Date Separated: N/A"
+      - paragraph: "Work Setup: Davao Site"
+      - paragraph: "Country: Philippines"
+      - button " Cancel Offboarding"
+      - button " Validate this Offboarding and Kickstart e-Clearance"
+      - button "Close":  Close
+    - document:
+      - heading "HR Admin Confirmation" [level=5]
+      - button "Close"
+      - paragraph: "Please select departments to include in this clearance/offboarding:"
+      - button " Revert Changes"
+      - table:
+        - rowgroup:
+          - row "Department Type Location Signatory Prerequisite":
+            - cell "Department"
+            - cell "Type"
+            - cell "Location"
+            - cell "Signatory"
+            - cell "Prerequisite"
+        - rowgroup:
+          - row "Team Leader Employee-specific -- Head --":
+            - cell "Team Leader":
+              - checkbox [checked]
+              - text: Team Leader
+            - cell "Employee-specific"
+            - cell
+            - cell:
+              - listbox:
+                - text: David Marvin Pascua (mdavid@connextglobal.com)
+                - combobox
+            - cell "-- Head --":
+              - combobox:
+                - option "-- Head --" [selected]
+                - option "Manager"
+                - option "OM"
+                - option "IT"
+                - option "Admin and Facilities Department"
+                - option "Employee Benefits"
+                - option "Connext University"
+                - option "People and Culture"
+                - option "Payroll and Finance"
+          - row "Manager Employee-specific -- Head --":
+            - cell "Manager":
+              - checkbox [checked]
+              - text: Manager
+            - cell "Employee-specific"
+            - cell
+            - cell:
+              - listbox:
+                - text: David Marvin Pascua (mdavid@connextglobal.com)
+                - combobox
+            - cell "-- Head --":
+              - combobox:
+                - option "-- Head --" [selected]
+                - option "Team Leader"
+                - option "OM"
+                - option "IT"
+                - option "Admin and Facilities Department"
+                - option "Employee Benefits"
+                - option "Connext University"
+                - option "People and Culture"
+                - option "Payroll and Finance"
+          - 'row "OM People Business Partner Country: Business Unit: Team Leader"':
+            - cell "OM":
+              - checkbox [checked]
+              - text: OM
+            - cell "People Business Partner"
+            - 'cell "Country: Business Unit:"':
+              - paragraph: "Country:"
+              - paragraph: "Business Unit:"
+            - cell:
+              - listbox:
+                - text: Goswami, Sanju (sgoswami@connextglobal.com)
+                - combobox
+            - cell "Team Leader":
+              - combobox:
+                - option "-- Head --"
+                - option "Team Leader" [selected]
+                - option "Manager"
+                - option "IT"
+                - option "Admin and Facilities Department"
+                - option "Employee Benefits"
+                - option "Connext University"
+                - option "People and Culture"
+                - option "Payroll and Finance"
+          - 'row "IT Location-specific Country: Philippines Site: PH - Davao Site Manager"':
+            - cell "IT":
+              - checkbox [checked]
+              - text: IT
+            - cell "Location-specific"
+            - 'cell "Country: Philippines Site: PH - Davao Site"':
+              - paragraph: "Country: Philippines"
+              - paragraph: "Site: PH - Davao Site"
+            - cell:
+              - listbox:
+                - text: Manasan Lester Dela Cruz (lmanasan@connextglobal.com)
+                - combobox
+            - cell "Manager":
+              - combobox:
+                - option "-- Head --"
+                - option "Team Leader"
+                - option "Manager" [selected]
+                - option "OM"
+                - option "Admin and Facilities Department"
+                - option "Employee Benefits"
+                - option "Connext University"
+                - option "People and Culture"
+                - option "Payroll and Finance"
+          - 'row "Admin and Facilities Department Location-specific Country: Philippines Site: Davao Site IT"':
+            - cell "Admin and Facilities Department":
+              - checkbox [checked]
+              - text: Admin and Facilities Department
+            - cell "Location-specific"
+            - 'cell "Country: Philippines Site: Davao Site"':
+              - paragraph: "Country: Philippines"
+              - paragraph: "Site: Davao Site"
+            - cell:
+              - listbox:
+                - text: Rosete Juthird Salvador (jrosete@connextglobal.com)
+                - combobox
+            - cell "IT":
+              - combobox:
+                - option "-- Head --"
+                - option "Team Leader"
+                - option "Manager"
+                - option "OM"
+                - option "IT" [selected]
+                - option "Employee Benefits"
+                - option "Connext University"
+                - option "People and Culture"
+                - option "Payroll and Finance"
+          - 'row "Employee Benefits Location-specific Country: Philippines Site: PH - Davao Site Admin and Facilities Department"':
+            - cell "Employee Benefits":
+              - checkbox [checked]
+              - text: Employee Benefits
+            - cell "Location-specific"
+            - 'cell "Country: Philippines Site: PH - Davao Site"':
+              - paragraph: "Country: Philippines"
+              - paragraph: "Site: PH - Davao Site"
+            - cell:
+              - listbox:
+                - text: Alamares Ellaine Panaligan (ealamares@connextglobal.com)
+                - combobox
+            - cell "Admin and Facilities Department":
+              - combobox:
+                - option "-- Head --"
+                - option "Team Leader"
+                - option "Manager"
+                - option "OM"
+                - option "IT"
+                - option "Admin and Facilities Department" [selected]
+                - option "Connext University"
+                - option "People and Culture"
+                - option "Payroll and Finance"
+          - 'row "Connext University Location-specific Country: Philippines Site: PH - Davao Site Admin and Facilities Department"':
+            - cell "Connext University":
+              - checkbox [checked]
+              - text: Connext University
+            - cell "Location-specific"
+            - 'cell "Country: Philippines Site: PH - Davao Site"':
+              - paragraph: "Country: Philippines"
+              - paragraph: "Site: PH - Davao Site"
+            - cell:
+              - listbox:
+                - text: Tatoy Sydney Caligagan (sydney@connext.solutions)
+                - combobox
+            - cell "Admin and Facilities Department":
+              - combobox:
+                - option "-- Head --"
+                - option "Team Leader"
+                - option "Manager"
+                - option "OM"
+                - option "IT"
+                - option "Admin and Facilities Department" [selected]
+                - option "Employee Benefits"
+                - option "People and Culture"
+                - option "Payroll and Finance"
+          - 'row "People and Culture People Business Partner Country: Philippines Business Unit: Healthcare Services Employee Benefits"':
+            - cell "People and Culture":
+              - checkbox [checked]
+              - text: People and Culture
+            - cell "People Business Partner"
+            - 'cell "Country: Philippines Business Unit: Healthcare Services"':
+              - paragraph: "Country: Philippines"
+              - paragraph: "Business Unit: Healthcare Services"
+            - cell:
+              - listbox:
+                - text: Salicanan Nolan Fontanil (nsalicanan@connextglobal.com)
+                - combobox
+            - cell "Employee Benefits":
+              - combobox:
+                - option "-- Head --"
+                - option "Team Leader"
+                - option "Manager"
+                - option "OM"
+                - option "IT"
+                - option "Admin and Facilities Department"
+                - option "Employee Benefits" [selected]
+                - option "Connext University"
+                - option "Payroll and Finance"
+          - 'row "Payroll and Finance Location-specific Country: Philippines Site: PH - Davao Site People and Culture"':
+            - cell "Payroll and Finance":
+              - checkbox [checked]
+              - text: Payroll and Finance
+            - cell "Location-specific"
+            - 'cell "Country: Philippines Site: PH - Davao Site"':
+              - paragraph: "Country: Philippines"
+              - paragraph: "Site: PH - Davao Site"
+            - cell:
+              - listbox:
+                - text: Reyes Patrick Rafael Nucup (preyes@connextglobal.com)
+                - combobox
+            - cell "People and Culture":
+              - combobox:
+                - option "-- Head --"
+                - option "Team Leader"
+                - option "Manager"
+                - option "OM"
+                - option "IT"
+                - option "Admin and Facilities Department"
+                - option "Employee Benefits"
+                - option "Connext University"
+                - option "People and Culture" [selected]
+      - heading "Work Flow" [level=2]
+      - img: Start ‹ Team Leader ‹ Manager ‹ OM IT ‹ Admin and Facilities Department ‹ Employee Benefits ‹ Connext University People and Culture ‹ Payroll and Finance
+      - button " Confirm"
+      - button "Close":  Cancel
+  - text: MegaToolTest ● Version 2.4.11 ● 06-Aug-2025 PST
+  - button " Update MegaTool"
+  - text: TO-DO Space  Learning  11:44 AM
+  - img "ph flag"
+  - text: 10:44 PM
+  - img "us flag"
+  - text: 05:44 PM
+  - img "us flag"
+```

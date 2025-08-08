@@ -1,0 +1,3 @@
+🕒 Test started: 8:20:09 PM
+[8:20:12 PM] 🕒 start run for Silbeth Pablo
+[8:22:08 PM] ⚠️ page closed unexpectedly

@@ -1,0 +1,5 @@
+🔍 Dropdown options for "Miranda": []
+⚠️ Fallback: no exact match found for 'Miranda, Garbeth Pamintuan', using ArrowDown/Enter
+📋 Final combobox value: 
+⚠️ Ticket not visible for Miranda, Garbeth Pamintuan — might not have saved.
+✅ Ticket created for: Miranda, Garbeth Pamintuan

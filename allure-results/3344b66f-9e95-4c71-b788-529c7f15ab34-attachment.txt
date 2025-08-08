@@ -1,0 +1,3 @@
+🔍 Dropdown options for search "Pablo": []
+⚠️ Fallback: no exact match found for 'Pablo, Silbeth Famisaran', using ArrowDown/Enter
+✅ Ticket created for: Pablo, Silbeth Famisaran

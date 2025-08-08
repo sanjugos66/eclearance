@@ -1,0 +1,16 @@
+testCases:
+  - name: "E-Clearance: Valid Officer Submission"
+    login:
+      username: "johndoe"
+      password: "secure123"
+    path: "/e-clearance/submit"
+    actions:
+      - type: "select"
+        field: "Rank"
+        value: "Colonel"
+      - type: "type"
+        field: "Reason"
+        value: "Vacation leave"
+      - type: "click"
+        field: "Submit"
+    expected: "Submission successful"

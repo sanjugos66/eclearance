@@ -1,0 +1,15 @@
+🕒 Test started: 7:05:22 PM
+[7:05:25 PM] 🕒 Test started at 7:05:25 PM
+[7:05:25 PM] 📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center
+[7:05:25 PM] 📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+[7:05:30 PM] 📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff
+[7:05:30 PM] 📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff?tab=offboarding
+[7:05:37 PM] ℹ️ Top dialog does not look like error; will not apply error→cancel sequence
+[7:05:37 PM] 🧠 Modal appeared during after prerequisite 2 select: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+[7:05:37 PM] 🧠 Top dialog (1 total) text: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+[7:05:37 PM] 🔘 Clicked "Yes, proceed" on top dialog
+[7:05:38 PM] ℹ️ Top dialog does not look like error; will not apply error→cancel sequence
+[7:05:38 PM] ℹ️ Leftover dialogs present (1) — clicking Cancel on the topmost as a safety.
+[7:05:38 PM] ↪️ Leftover top dialog text: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+[7:05:52 PM] ⚠️ Page closed unexpectedly during offboarding for Silbeth Pablo
+[7:05:52 PM] ✅ Offboarding for Silbeth Pablo validated flow completed (handled stacked modals).

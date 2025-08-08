@@ -1,0 +1,24 @@
+🧠 Modal appeared during after prerequisite 1 select: ?!i  Error×Cycle detected in department hierarchy.OKCancel
+⚠️ Modal button could not be clicked during after prerequisite 1 select: Attempting to serialize unexpected value at position "_frame._platform.boxedStackPrefixes": () => {
+    if (process.env.PWDEBUGIMPL)
+      return [];
+    return [coreDir, ...boxedStackPrefixes];
+  }
+🧠 Modal appeared during after prerequisite 1 OK: ?!i  Error×Cycle detected in department hierarchy.OKCancel
+⚠️ Modal button could not be clicked during after prerequisite 1 OK: Attempting to serialize unexpected value at position "_frame._platform.boxedStackPrefixes": () => {
+    if (process.env.PWDEBUGIMPL)
+      return [];
+    return [coreDir, ...boxedStackPrefixes];
+  }
+🧠 Modal appeared during after confirm role assignment: ?!i  Error×Must have at least one head prerequisite.OKCancel
+⚠️ Modal button could not be clicked during after confirm role assignment: Attempting to serialize unexpected value at position "_frame._platform.boxedStackPrefixes": () => {
+    if (process.env.PWDEBUGIMPL)
+      return [];
+    return [coreDir, ...boxedStackPrefixes];
+  }
+🧠 Modal appeared during after prerequisite 2 select: ?!i  Error×Must have at least one head prerequisite.OKCancel
+⚠️ Modal button could not be clicked during after prerequisite 2 select: Attempting to serialize unexpected value at position "_frame._platform.boxedStackPrefixes": () => {
+    if (process.env.PWDEBUGIMPL)
+      return [];
+    return [coreDir, ...boxedStackPrefixes];
+  }

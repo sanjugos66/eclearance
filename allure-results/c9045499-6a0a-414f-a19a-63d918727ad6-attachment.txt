@@ -1,0 +1,12 @@
+🕒 Test started: 7:21:11 PM
+[7:21:14 PM] 🕒 start run for Silbeth Pablo
+[7:21:14 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center
+[7:21:14 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+[7:21:19 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center/my-staff
+[7:21:20 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center/my-staff?tab=offboarding
+[7:21:26 PM] [7:21:26 PM] 🧠 Modal appeared during after confirm role assignment: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+[7:21:26 PM] [7:21:26 PM] 🔘 Clicked "Cancel" on top dialog
+[7:21:27 PM] [7:21:27 PM] 🧠 Final modal appeared during post-confirm (stack check): ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+[7:21:27 PM] [7:21:27 PM] 🔘 Clicked "Cancel" on final modal (post-confirm (stack check))
+[7:21:27 PM] ✅ Offboarding for Silbeth Pablo validated and routed successfully
+[7:21:27 PM] ⚠️ page closed unexpectedly

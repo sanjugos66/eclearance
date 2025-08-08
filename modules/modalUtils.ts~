@@ -1,0 +1,149 @@
+import { Page, expect } from '@playwright/test';
+
+const shot = async (page: Page, name: string) => {
+  try { await page.screenshot({ path: `screenshots/${name}.png`, fullPage: false }); } catch {}
+};
+
+const ts = () => new Date().toLocaleTimeString();
+
+const dialog = (page: Page) => page.getByRole('dialog');                   // general dialog
+const swalPopup = (page: Page) => page.locator('.swal2-container .swal2-popup'); // SweetAlert2 popup
+
+/**
+ * Click a button inside the currently top-most visible dialog, by exact accessible name.
+ */
+async function clickDialogButton(page: Page, label: string): Promise<boolean> {
+  const btn = page.getByRole('button', { name: new RegExp(`^${label}$`, 'i') });
+  if (await btn.isVisible().catch(() => false) && await btn.isEnabled().catch(() => false)) {
+    await btn.scrollIntoViewIfNeeded().catch(() => {});
+    await btn.click();
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Handle a visible modal (if present) by trying a list of labels in order.
+ * Returns the modal text if something was handled.
+ */
+export async function handleAnyModals(page: Page, where: string = ''): Promise<string | null> {
+  const vis = await dialog(page).isVisible({ timeout: 800 }).catch(() => false);
+  if (!vis) return null;
+
+  const txt = (await dialog(page).textContent().catch(() => '') || '').trim();
+  console.log(`[${ts()}] 🧠 Modal appeared${where ? ` during ${where}` : ''}: ${txt}`);
+  await shot(page, `modal_${where.replace(/\s+/g, '_')}`);
+
+  const labels = ['Cancel', 'OK', 'Yes, proceed', 'Close', 'Confirm', '   Confirm'];
+  for (const name of labels) {
+    if (await clickDialogButton(page, name)) {
+      // Wait for either hide or a different dialog to be on top
+      await dialog(page).waitFor({ state: 'hidden', timeout: 2000 }).catch(() => {});
+      console.log(`[${ts()}] ✅ Modal closed${where ? ` after ${where}` : ''} by clicking "${name}"`);
+      return txt;
+    }
+  }
+
+  console.log(`[${ts()}] ⚠️ Modal had no actionable button during ${where}`);
+  return txt;
+}
+
+/**
+ * Specific fix for stacked SweetAlerts:
+ * If we see an Error swal (no personal email), hit OK, then immediately refocus
+ * the underlying "Are you sure?" swal and press Cancel.
+ *
+ * Returns true if we performed the error→ok→cancel stack handling.
+ */
+export async function resolveErrorThenCancelUnderlying(page: Page): Promise<boolean> {
+  // Top-most swal text, if any
+  const hasSwal = await swalPopup(page).last().isVisible({ timeout: 800 }).catch(() => false);
+  if (!hasSwal) return false;
+
+  const topText = (await swalPopup(page).last().textContent().catch(() => '') || '').trim();
+
+  const looksLikeError =
+    /error/i.test(topText) ||
+    /unable to generate offboarding ticket/i.test(topText) ||
+    /no personal email/i.test(topText);
+
+  if (!looksLikeError) return false;
+
+  console.log(`[${ts()}] 🧩 Stacked swal detected (ERROR on top). Text: ${topText}`);
+  await shot(page, 'stack_error_top');
+
+  // 1) Dismiss the error swal with OK
+  if (await clickDialogButton(page, 'OK')) {
+    await swalPopup(page).last().waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {});
+    console.log(`[${ts()}] ✅ Error swal dismissed with OK`);
+  } else {
+    console.log(`[${ts()}] ⚠️ Could not find OK on error swal`);
+    return false;
+  }
+
+  // 2) Give DOM a tick, then bring the underlying swal to focus with a gentle click
+  await page.waitForTimeout(150);
+  const under = swalPopup(page).last();
+  const maybeVisible = await under.isVisible({ timeout: 1200 }).catch(() => false);
+  if (maybeVisible) {
+    // Tap inside the popup to ensure it’s “active” for NVDA/ARIA and the focus ring
+    try {
+      const box = await under.boundingBox();
+      if (box) {
+        await page.mouse.click(box.x + box.width / 2, box.y + 20); // near the header area
+        console.log(`[${ts()}] 👆 Nudged underlying swal to the front`);
+      } else {
+        await under.click({ position: { x: 10, y: 10 } }).catch(() => {});
+      }
+    } catch {}
+    await shot(page, 'stack_after_refocus');
+  }
+
+  // 3) Press Cancel on the underlying "Are you sure?" swal
+  if (await clickDialogButton(page, 'Cancel')) {
+    await under.waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {});
+    console.log(`[${ts()}] 🛑 Underlying confirmation swal dismissed with Cancel`);
+    await shot(page, 'stack_after_cancel');
+    return true;
+  }
+
+  console.log(`[${ts()}] ⚠️ Could not click Cancel on underlying swal`);
+  return false;
+}
+
+/**
+ * Waits for a late modal, logs, screenshots, and tries to close it.
+ */
+export async function waitAndCatchFinalModal(page: Page, label: string): Promise<string | null> {
+  // Probe screenshots (3 secs total)
+  for (let i = 1; i <= 3; i++) {
+    await page.waitForTimeout(1000);
+    await shot(page, `final_modal_probe_${label}_${i}`);
+  }
+
+  try {
+    await dialog(page).waitFor({ state: 'visible', timeout: 8000 });
+  } catch {
+    return null;
+  }
+
+  const text = (await dialog(page).textContent().catch(() => '') || '').trim();
+  console.log(`[${ts()}] 🧠 Final modal appeared (${label}): ${text}`);
+  await shot(page, `final_modal_${label}`);
+
+  // Try stacked error flow first (if applicable)
+  const handled = await resolveErrorThenCancelUnderlying(page);
+  if (handled) return text;
+
+  // Otherwise, close normally with OK/Cancel
+  const labels = ['Cancel', 'OK', 'Yes, proceed', 'Close', 'Confirm', '   Confirm'];
+  for (const name of labels) {
+    if (await clickDialogButton(page, name)) {
+      console.log(`[${ts()}] ✅ Final modal closed via "${name}"`);
+      break;
+    }
+  }
+
+  await dialog(page).waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {});
+  return text;
+}

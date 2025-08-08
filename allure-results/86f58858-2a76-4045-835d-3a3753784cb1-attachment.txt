@@ -1,0 +1,3 @@
+🔍 Dropdown options for search "Chicco": []
+⚠️ Fallback: no exact match found for 'Chicco, Samantha May', using ArrowDown/Enter
+✅ Ticket created for: Chicco, Samantha May

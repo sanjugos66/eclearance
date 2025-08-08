@@ -1,0 +1,14 @@
+import { test } from '@playwright/test';
+import fs from 'fs';
+import yaml from 'js-yaml';
+import { login } from '../modules/login';
+import { createOffboardingTicket } from '../modules/offboarding';
+
+const testCases = yaml.load(fs.readFileSync('./configs/offboarding.yaml', 'utf8')).testCases;
+
+for (const testCase of testCases) {
+  test(testCase.name, async ({ page }) => {
+    await login(page, testCase.login.username, testCase.login.password);
+    await createOffboardingTicket(page, testCase.employee);
+  });
+}

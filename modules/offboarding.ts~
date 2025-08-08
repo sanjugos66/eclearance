@@ -1,0 +1,18 @@
+export async function createOffboardingTicket(page, employeeName: string) {
+  await page.getByRole('link', { name: ' Staff Center' }).click();
+  await page.getByRole('link', { name: ' My Staff' }).click();
+  await page.getByRole('tab', { name: ' Offboarding' }).click();
+
+  await page.getByText('Create offboarding ticket', { exact: true }).click();
+
+  // Select employee from dropdown
+  await page.locator('#createOffboardingTicket span').nth(2).click();
+  await page.getByRole('combobox').fill(employeeName);
+
+  await page.getByText(new RegExp(employeeName.split(' ')[0])).first().click();
+
+  await page.getByRole('button', { name: ' Create Ticket' }).click();
+
+  // Optional: confirm success
+  await page.waitForTimeout(1000); // Replace with success toast check if possible
+}

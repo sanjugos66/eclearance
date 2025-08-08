@@ -1,0 +1,3 @@
+🔍 Found dropdown options: []
+⚠️ No matching dropdown item found, attempting keyboard fallback
+📋 Final combobox value: Chicco, Samantha May

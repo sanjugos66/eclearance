@@ -1,0 +1,3 @@
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+⚠️ Page closed unexpectedly during offboarding for Silbeth Pablo

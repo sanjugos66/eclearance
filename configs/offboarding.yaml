@@ -1,0 +1,9 @@
+testCases:
+  - name: "Create Offboarding for Samantha"
+    employee: "Chicco, Samantha May"
+
+  - name: "Create Offboarding for Silbeth"
+    employee: "Pablo, Silbeth Famisaran"
+
+  - name: "Create Offboarding for Garbeth"
+    employee: "Miranda, Garbeth Pamintuan"

@@ -1,0 +1,8 @@
+# Page snapshot
+
+```yaml
+- dialog "Invalid username/password":
+  - heading "Invalid username/password" [level=2]
+  - text: User was not found. Kindly inform Connext Form Admin.
+  - button "OK"
+```

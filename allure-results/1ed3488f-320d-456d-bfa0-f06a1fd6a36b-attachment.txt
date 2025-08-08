@@ -1,0 +1,8 @@
+🔍 Dropdown options for "Chicco": [
+  'Chicco, Samantha May (samantha@connext.solutions)\n' +
+    'User ID: 916 | Employee ID: 2428'
+]
+✅ Hover + click on matched item: Chicco, Samantha May
+📋 Selection label: 
+❌ Selection label did not reflect chosen value for Chicco, Samantha May
+❌ Failed: Chicco, Samantha May was not selected properly.

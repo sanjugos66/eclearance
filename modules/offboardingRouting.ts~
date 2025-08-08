@@ -1,0 +1,118 @@
+import { Page } from '@playwright/test';
+import fs from 'fs';
+import path from 'path';
+import { handleAnyModals, waitAndCatchFinalModal, bringUnderlyingDialogToFront } from './modalUtils';
+import { saveDebugLog as _saveDebugLog } from './debugLogger'; // keep if you have it; otherwise stub
+
+export async function validateAndRouteOffboarding(
+  page: Page,
+  employeeName: string
+): Promise<'success' | 'blocked'> {
+  // --- per-run artifacts ---
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const runDir = path.join('artifacts', `offboarding_${employeeName.replace(/\s+/g, '_')}_${stamp}`);
+  fs.mkdirSync(runDir, { recursive: true });
+  const logFile = path.join(runDir, 'run.log');
+
+  // debug logger (safe if _saveDebugLog isn’t defined)
+  const saveDebugLog = typeof _saveDebugLog === 'function' ? _saveDebugLog : () => {};
+  const log = (msg: string) => {
+    const line = `[${new Date().toLocaleTimeString()}] ${msg}`;
+    console.log(line);
+    saveDebugLog(employeeName, line);
+    try { fs.appendFileSync(logFile, line + '\n'); } catch {}
+  };
+  const snap = async (tag: string) => {
+    const file = path.join(runDir, `${Date.now()}_${tag}.png`);
+    try { await page.screenshot({ path: file, fullPage: true }); } catch {}
+  };
+  const dump = async (tag: string) => {
+    try { fs.writeFileSync(path.join(runDir, `${Date.now()}_${tag}.html`), await page.content()); } catch {}
+  };
+
+  let finished = false;
+  page.on('close', () => { if (!finished) log('⚠️ page closed unexpectedly'); });
+
+  log(`🕒 start run for ${employeeName}`);
+
+  // === Navigate (same as your working flow) ===
+  await page.getByRole('link', { name: /Staff Center/i }).click();
+  await snap('nav_staff_center');
+
+  await page.getByRole('link', { name: /My Staff/i }).click();
+  await snap('nav_my_staff');
+
+  await page.getByRole('tab', { name: /Offboarding/i }).click();
+  await snap('tab_offboarding');
+
+  // search
+  const searchBox = page.getByRole('textbox', { name: /Search/i });
+  await searchBox.click();
+  await searchBox.fill('pablo');
+  await searchBox.press('Enter');
+  await page.waitForTimeout(800);
+  await snap('search_pablo');
+
+  await page.getByText('People Systems View').click();
+  await searchBox.click();
+  await searchBox.fill('pablo');
+  await searchBox.press('Enter');
+
+  // open card
+  await page.getByText(employeeName).click();
+  await handleAnyModals(page, 'after employee card open');
+  await snap('opened_card');
+
+  // validate
+  await page.getByRole('button', { name: /Validate this Offboarding/i }).click();
+  await handleAnyModals(page, 'after validate click');
+
+  // (your assignment steps)
+  await page.getByRole('row', { name: /OM People Business Partner/i }).locator('span').nth(3).click();
+  // be tolerant to whitespace in the email chunk:
+  await page.getByText(/Goswami,\s*Sanju\s*\(sgoswami@/i).click();
+  await page.locator('g:nth-child(5) > .node-foreign-object > .node-foreign-object-div > .outer-wrapper > div').click();
+  await handleAnyModals(page, 'after assigning OM people partner');
+  await snap('assigned_om');
+
+  // confirm role
+  await page.getByRole('button', { name: /^\s+Confirm$/ }).click();
+  await handleAnyModals(page, 'after confirm role assignment');
+
+  // prerequisite select (blocker case)
+  await page.locator('#prerequisite_edit-2').selectOption('0');
+  await handleAnyModals(page, 'after prerequisite 2 select');
+
+  // final confirm -> error modal -> OK -> bring back confirm modal -> Cancel
+  await page.getByRole('button', { name: /^\s+Confirm$/ }).click();
+
+  // 1) catch the error modal and close it (OK)
+  const finalMsg = await waitAndCatchFinalModal(page, 'post-final-confirm');
+  if (finalMsg && /no personal email/i.test(finalMsg)) {
+    log(`❌ Blocked: ${finalMsg}`);
+    await snap('error_modal_seen');
+
+    // 2) make sure the underlying confirm modal is "active" again
+    await bringUnderlyingDialogToFront(page);
+
+    // 3) click CANCEL on the underlying confirm dialog
+    const cancelBtn = page.getByRole('button', { name: /^Cancel$/i }).first();
+    if (await cancelBtn.isVisible().catch(() => false)) {
+      await cancelBtn.click().catch(() => {});
+      await snap('cancel_clicked');
+    } else {
+      log('⚠️ Underlying Cancel not visible; trying fallback selector');
+      await page.locator('button:has-text("Cancel")').first().click({ timeout: 2000 }).catch(() => {});
+    }
+
+    finished = true; // prevent “page closed unexpectedly” noise
+    log('✅ Exited cleanly after blocker (cancel pressed).');
+    return 'blocked';
+  }
+
+  // If not blocked, success path
+  finished = true;
+  log(`✅ Offboarding for ${employeeName} validated and routed successfully`);
+  await snap('success_end');
+  return 'success';
+}

@@ -1,0 +1,9 @@
+🕒 Test started: 8:27:57 PM
+[8:27:59 PM] 🕒 start run for Silbeth Pablo
+🧠 Modal appeared during after confirm role assignment: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+🔘 Clicking modal button: Yes, proceed
+✅ Modal closed after after confirm role assignment
+🧠 Final modal appeared during post-final-confirm: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+🔘 Clicking final modal button: Yes, proceed
+[8:29:56 PM] ⚠️ page closed unexpectedly
+[8:29:56 PM] ✅ Offboarding for Silbeth Pablo validated and routed successfully

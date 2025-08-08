@@ -1,0 +1,117 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - navigation:
+    - strong
+    - list:
+      - listitem:
+        - link " Admin":
+          - /url: /admin
+      - listitem:
+        - link " Home (current)":
+          - /url: /home
+      - listitem:
+        - link " Directory":
+          - /url: /directory
+      - listitem:
+        - link " Drive":
+          - /url: /drive
+      - listitem:
+        - link " Staff Center":
+          - /url: /staff-center
+      - listitem:
+        - link " Extras":
+          - /url: /extras
+      - listitem:
+        - link " Facilities":
+          - /url: /facilities
+      - listitem:
+        - link " Learning":
+          - /url: /learning
+    - list:
+      - listitem "Tickets": 
+    - list:
+      - listitem "Notifications": 
+    - list:
+      - listitem "Events": 
+    - list:
+      - listitem "Birthdays": 
+    - list:
+      - listitem "Sanju"
+    - list:
+      - listitem "Logout": 
+- main:
+  - img
+  - text: Sanju  2463 ● sgoswami@connextglobal.com  Sprout Login  My Spaces
+  - separator
+  - group:
+    - text: Quick Links
+    - link "":
+      - /url: /admin/quick-link
+  - group:
+    - text: My Links
+    - link "":
+      - /url: /staff-center/my-info?tab=account-settings
+  - text: Working . . .
+  - link " Home":
+    - /url: /home
+  - heading "Clients  " [level=6]
+  - table:
+    - rowgroup:
+      - row "Title Description Department":
+        - cell "Title"
+        - cell "Description"
+        - cell "Department"
+    - rowgroup:
+      - row "No clients found.":
+        - cell "No clients found."
+  - heading "Apps and Services " [level=6]:
+    - text: Apps and Services
+    - link "":
+      - /url: /admin/home-page-ui/apps-and-service
+  - text: No Featured So Far
+  - heading "Featured " [level=6]:
+    - text: Featured
+    - link "":
+      - /url: /admin/home-page-ui/featured
+  - list: No Featured So Far
+  - heading "Calendar List of Activities" [level=6]:
+    - radio "Calendar"
+    - text: Calendar
+    - radio "List of Activities"
+    - text: List of Activities
+  - heading "Activities  " [level=2]:
+    - text: Activities
+    - link "":
+      - /url: /settings/store/event
+    - text: 
+  - text: August 2025
+  - list:
+    - listitem: Sun
+    - listitem: Mon
+    - listitem: Tue
+    - listitem: Wed
+    - listitem: Thu
+    - listitem: Fri
+    - listitem: Sat
+  - list
+  - heading [level=2]
+  - heading "Activities Add New Activity" [level=4]:
+    - text: Activities
+    - button "Add New Activity"
+  - link:
+    - /url: /extras/raffle-list
+  - paragraph: No Event Avalaible
+  - heading " Hotlines  " [level=6]:
+    - text:  Hotlines
+    - link "":
+      - /url: /directory/hotline
+    - text: 
+  - text: MegaToolTest ● Version 2.4.11 ● 06-Aug-2025 PST TO-DO Space  Learning  10:18 AM
+  - img "ph flag"
+  - text: 09:18 PM
+  - img "us flag"
+  - text: 04:18 PM
+  - img "us flag"
+```

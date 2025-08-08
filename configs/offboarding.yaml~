@@ -1,0 +1,6 @@
+testCases:
+  - name: "Create Offboarding for Samantha"
+    login:
+      username: "sgoswami@connextglobal.com"
+      password: "Password123!"
+    employee: "Chicco, Samantha May"

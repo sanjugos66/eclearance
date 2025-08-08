@@ -1,0 +1,13 @@
+# Page snapshot
+
+```yaml
+- document:
+  - img "MegaForm Logo"
+  - textbox: sgoswami@connextglobal.com
+  - text: Username 
+  - textbox
+  - text: Password
+  - button "LOG IN" [disabled]
+  - button "RESET PASSWORD"
+  - text:  Powered by Connext Global Solutions, Inc. © All rights reserved.
+```

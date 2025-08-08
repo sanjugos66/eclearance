@@ -1,0 +1,8 @@
+# Page snapshot
+
+```yaml
+- dialog "Error":
+  - heading "Error" [level=2]
+  - text: Must have at least one head prerequisite.
+  - button "OK"
+```

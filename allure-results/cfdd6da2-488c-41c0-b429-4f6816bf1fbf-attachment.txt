@@ -1,0 +1,5 @@
+🕒 Test started: 7:16:05 PM
+[7:16:08 PM] 🕒 start run for Silbeth Pablo
+[7:16:08 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center
+[7:16:08 PM] 📦 navigated: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+[7:16:08 PM] ⚠️ page closed unexpectedly

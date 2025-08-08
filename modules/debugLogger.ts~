@@ -1,0 +1,16 @@
+import fs from 'fs';
+import path from 'path';
+
+export function startRunLog(testName: string) {
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const dir = path.join(process.cwd(), 'run_artifacts', stamp);
+  fs.mkdirSync(dir, { recursive: true });
+  const logFile = path.join(dir, `${testName.replace(/\s+/g, '_')}.log`);
+  return { dir, logFile, stamp };
+}
+
+export function saveDebugLog(_testName: string, line: string, logFile?: string) {
+  try {
+    if (logFile) fs.appendFileSync(logFile, line + '\n');
+  } catch {}
+}

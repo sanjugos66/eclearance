@@ -1,0 +1,4 @@
+🔍 Dropdown options: []
+⚠️ Fallback: no exact match found, using ArrowDown/Enter
+❌ Error modal appeared: ?!i  Error×Please select a userOKCancel
+❌ Failed: Chicco, Samantha May was not selected properly.

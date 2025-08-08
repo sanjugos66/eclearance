@@ -1,0 +1,7 @@
+🧠 Modal appeared during after prerequisite 1 select: ?!i  Error×Cycle detected in department hierarchy.OKCancel
+✅ Modal closed after after prerequisite 1 select
+🧠 Modal appeared during after confirm role assignment: ?!i  Error×Must have at least one head prerequisite.OKCancel
+✅ Modal closed after after confirm role assignment
+🧠 Modal appeared during after prerequisite 2 confirm: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
+✅ Modal closed after after prerequisite 2 confirm
+✅ Offboarding for Silbeth Pablo validated and routed.

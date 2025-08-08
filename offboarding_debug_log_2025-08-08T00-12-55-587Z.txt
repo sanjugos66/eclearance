@@ -1,0 +1,681 @@
+
+🕒 Test started at 6:13:00 PM
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-info?tab=info
+=== Clicked Staff Center ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MegaToolTest - My Information</title><base href="/"><script src="assets/ckeditor/ckeditor.js"></script><style>.cke{visibility:hidden;}</style><!-- Include pdf.js from CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script><!-- <script src="https://cdn.ckeditor.com/4.11.0/full-all/ckeditor.js"></script> --><!-- <script src="https://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script> --><!-- <script src="./assets/ckeditor/ckeditor.js"></script> --><script src="https://unpkg.com/imask"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><style type="text/css">body {
+      margin: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .app-loading {
+      position:fixed;
+      padding:0;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: rgb(19, 23, 34);
+    }
+
+    .center-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -115px 0 0 -75px;    /* consider the text and image sizes to offset on right and top margins*/
+      height: 50px;
+      text-align: center;
+    }
+
+    .text-status {
+      color: #DE7431;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* SVG spinner icon animation */
+    .spinner {
+      -webkit-animation: rotate 2s linear infinite;
+              animation: rotate 2s linear infinite;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner .path {
+      stroke: #1a7eca;
+      stroke-linecap: round;
+      -webkit-animation: dash 1.5s ease-in-out infinite;
+              animation: dash 1.5s ease-in-out infinite;
+    }
+
+
+    @-webkit-keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="h
+...
+
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff
+=== Clicked My Staff ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MegaToolTest - Offboarding</title><base href="/"><script src="assets/ckeditor/ckeditor.js"></script><style>.cke{visibility:hidden;}</style><!-- Include pdf.js from CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script><!-- <script src="https://cdn.ckeditor.com/4.11.0/full-all/ckeditor.js"></script> --><!-- <script src="https://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script> --><!-- <script src="./assets/ckeditor/ckeditor.js"></script> --><script src="https://unpkg.com/imask"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><style type="text/css">body {
+      margin: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .app-loading {
+      position:fixed;
+      padding:0;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: rgb(19, 23, 34);
+    }
+
+    .center-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -115px 0 0 -75px;    /* consider the text and image sizes to offset on right and top margins*/
+      height: 50px;
+      text-align: center;
+    }
+
+    .text-status {
+      color: #DE7431;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* SVG spinner icon animation */
+    .spinner {
+      -webkit-animation: rotate 2s linear infinite;
+              animation: rotate 2s linear infinite;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner .path {
+      stroke: #1a7eca;
+      stroke-linecap: round;
+      -webkit-animation: dash 1.5s ease-in-out infinite;
+              animation: dash 1.5s ease-in-out infinite;
+    }
+
+
+    @-webkit-keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="http
+...
+
+📦 Page navigated to: https://test-megatool.connextglobal.com/staff-center/my-staff?tab=offboarding
+=== Switched to Offboarding tab ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MegaToolTest - Offboarding</title><base href="/"><script src="assets/ckeditor/ckeditor.js"></script><style>.cke{visibility:hidden;}</style><!-- Include pdf.js from CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script><!-- <script src="https://cdn.ckeditor.com/4.11.0/full-all/ckeditor.js"></script> --><!-- <script src="https://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script> --><!-- <script src="./assets/ckeditor/ckeditor.js"></script> --><script src="https://unpkg.com/imask"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><style type="text/css">body {
+      margin: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .app-loading {
+      position:fixed;
+      padding:0;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: rgb(19, 23, 34);
+    }
+
+    .center-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -115px 0 0 -75px;    /* consider the text and image sizes to offset on right and top margins*/
+      height: 50px;
+      text-align: center;
+    }
+
+    .text-status {
+      color: #DE7431;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* SVG spinner icon animation */
+    .spinner {
+      -webkit-animation: rotate 2s linear infinite;
+              animation: rotate 2s linear infinite;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner .path {
+      stroke: #1a7eca;
+      stroke-linecap: round;
+      -webkit-animation: dash 1.5s ease-in-out infinite;
+              animation: dash 1.5s ease-in-out infinite;
+    }
+
+
+    @-webkit-keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="http
+...
+
+=== Searched for pablo ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MegaToolTest - Offboarding</title><base href="/"><script src="assets/ckeditor/ckeditor.js"></script><style>.cke{visibility:hidden;}</style><!-- Include pdf.js from CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script><!-- <script src="https://cdn.ckeditor.com/4.11.0/full-all/ckeditor.js"></script> --><!-- <script src="https://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script> --><!-- <script src="./assets/ckeditor/ckeditor.js"></script> --><script src="https://unpkg.com/imask"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><style type="text/css">body {
+      margin: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .app-loading {
+      position:fixed;
+      padding:0;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: rgb(19, 23, 34);
+    }
+
+    .center-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -115px 0 0 -75px;    /* consider the text and image sizes to offset on right and top margins*/
+      height: 50px;
+      text-align: center;
+    }
+
+    .text-status {
+      color: #DE7431;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* SVG spinner icon animation */
+    .spinner {
+      -webkit-animation: rotate 2s linear infinite;
+              animation: rotate 2s linear infinite;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner .path {
+      stroke: #1a7eca;
+      stroke-linecap: round;
+      -webkit-animation: dash 1.5s ease-in-out infinite;
+              animation: dash 1.5s ease-in-out infinite;
+    }
+
+
+    @-webkit-keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="http
+...
+
+=== Opened employee card ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MegaToolTest - Offboarding</title><base href="/"><script src="assets/ckeditor/ckeditor.js"></script><style>.cke{visibility:hidden;}</style><!-- Include pdf.js from CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script><!-- <script src="https://cdn.ckeditor.com/4.11.0/full-all/ckeditor.js"></script> --><!-- <script src="https://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script> --><!-- <script src="./assets/ckeditor/ckeditor.js"></script> --><script src="https://unpkg.com/imask"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><style type="text/css">body {
+      margin: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .app-loading {
+      position:fixed;
+      padding:0;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: rgb(19, 23, 34);
+    }
+
+    .center-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -115px 0 0 -75px;    /* consider the text and image sizes to offset on right and top margins*/
+      height: 50px;
+      text-align: center;
+    }
+
+    .text-status {
+      color: #DE7431;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* SVG spinner icon animation */
+    .spinner {
+      -webkit-animation: rotate 2s linear infinite;
+              animation: rotate 2s linear infinite;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner .path {
+      stroke: #1a7eca;
+      stroke-linecap: round;
+      -webkit-animation: dash 1.5s ease-in-out infinite;
+              animation: dash 1.5s ease-in-out infinite;
+    }
+
+
+    @-webkit-keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="http
+...
+
+=== Clicked Validate Offboarding ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MegaToolTest - Offboarding</title><base href="/"><script src="assets/ckeditor/ckeditor.js"></script><style>.cke{visibility:hidden;}</style><!-- Include pdf.js from CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script><!-- <script src="https://cdn.ckeditor.com/4.11.0/full-all/ckeditor.js"></script> --><!-- <script src="https://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script> --><!-- <script src="./assets/ckeditor/ckeditor.js"></script> --><script src="https://unpkg.com/imask"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><style type="text/css">body {
+      margin: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .app-loading {
+      position:fixed;
+      padding:0;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: rgb(19, 23, 34);
+    }
+
+    .center-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -115px 0 0 -75px;    /* consider the text and image sizes to offset on right and top margins*/
+      height: 50px;
+      text-align: center;
+    }
+
+    .text-status {
+      color: #DE7431;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* SVG spinner icon animation */
+    .spinner {
+      -webkit-animation: rotate 2s linear infinite;
+              animation: rotate 2s linear infinite;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner .path {
+      stroke: #1a7eca;
+      stroke-linecap: round;
+      -webkit-animation: dash 1.5s ease-in-out infinite;
+              animation: dash 1.5s ease-in-out infinite;
+    }
+
+
+    @-webkit-keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="http
+...
+
+=== Assigned OM People Partner ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MegaToolTest - Offboarding</title><base href="/"><script src="assets/ckeditor/ckeditor.js"></script><style>.cke{visibility:hidden;}</style><!-- Include pdf.js from CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script><!-- <script src="https://cdn.ckeditor.com/4.11.0/full-all/ckeditor.js"></script> --><!-- <script src="https://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script> --><!-- <script src="./assets/ckeditor/ckeditor.js"></script> --><script src="https://unpkg.com/imask"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><style type="text/css">body {
+      margin: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .app-loading {
+      position:fixed;
+      padding:0;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: rgb(19, 23, 34);
+    }
+
+    .center-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -115px 0 0 -75px;    /* consider the text and image sizes to offset on right and top margins*/
+      height: 50px;
+      text-align: center;
+    }
+
+    .text-status {
+      color: #DE7431;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* SVG spinner icon animation */
+    .spinner {
+      -webkit-animation: rotate 2s linear infinite;
+              animation: rotate 2s linear infinite;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner .path {
+      stroke: #1a7eca;
+      stroke-linecap: round;
+      -webkit-animation: dash 1.5s ease-in-out infinite;
+              animation: dash 1.5s ease-in-out infinite;
+    }
+
+
+    @-webkit-keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="http
+...
+
+⚠️ Page closed unexpectedly during offboarding for Silbeth Pablo
+🚪 Page closed immediately after final confirm
+🧠 Final modal text before close: ?!i  Are you sure?×You won't be able to revert this!Yes, proceedCancel
